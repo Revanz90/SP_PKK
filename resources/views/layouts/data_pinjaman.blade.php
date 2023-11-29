@@ -51,11 +51,10 @@
                 <table id="examplePolos" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>Nama Anggota</th>
+                            <th>Id_Anggota</th>
                             <th>Tanggal</th>
-                            <th>Dari</th>
-                            <th>No. Surat</th>
-                            <th>Perihal</th>
+                            <th>Nominal</th>
                             <th>Keterangan</th>
                             <th>Action</th>
                         </tr>

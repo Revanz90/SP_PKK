@@ -22,7 +22,8 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1">TAKAH<b>MUSEUM</b></a>
+                <a href="../../index2.html" class="h6">Sistem Informasi Simpan Pinjam Pemberdayaan
+                    Kesejahteraan Keluarga (PKK) Kelurahan Kalitirto, Berbah, Sleman</a>
                 @include('app-layout/alert')
             </div>
             <div class="card-body">

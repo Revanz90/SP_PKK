@@ -1,15 +1,14 @@
 <?php
 
-use App\Http\Controllers\ActionDisposisiController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataAngsuranController;
+use App\Http\Controllers\DataPinjamanController;
+use App\Http\Controllers\DataSimpananController;
 use App\Http\Controllers\DetailDisposisiController;
-use App\Http\Controllers\DetailSuratMasukController;
-use App\Http\Controllers\DisposisiController;
 use App\Http\Controllers\DitakahkanController;
 use App\Http\Controllers\SuratKeluarController;
-use App\Http\Controllers\SuratMasukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,10 +38,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/surat_masuk', [SuratMasukController::class, 'suratmasuk'])->name('suratmasuk');
-    Route::post('/surat_masuk', [SuratMasukController::class, 'store'])->name('storesuratmasuk');
-    Route::post('/surat_masuk/{id}', [SuratMasukController::class, 'updatesuratmasukditakahkan'])->name('suratditakahkan');
-    Route::get('/{id}/detail_suratmasuk', [DetailSuratMasukController::class, 'detailsuratmasuk'])->name('detail_suratmasuk');
+    Route::get('/data_simpanan', [DataSimpananController::class, 'index'])->name('datasimpanan');
+    Route::post('/data_simpanan', [DataSimpananController::class, 'store'])->name('storedatasimpanan');
+    Route::post('/data_simpanan/{id}', [DataSimpananController::class, 'updatedatasimpanan'])->name('suratdisimpan');
+    Route::get('/{id}/detail_datasimpanan', [DetailDataSimpananController::class, 'index'])->name('detail_datasimpanan');
+
+    Route::get('/data_pinjaman', [DataPinjamanController::class, 'index'])->name('datapinjaman');
+    Route::post('/data_pinjaman', [DataPinjamanController::class, 'store'])->name('storedatapinjaman');
+    Route::post('/data_pinjaman/{id}', [DataPinjamanController::class, 'updatedatapinjaman'])->name('suratdisimpan');
+    Route::get('/{id}/detail_datapinjaman', [DetailDataPinjamanController::class, 'index'])->name('detail_datapinjaman');
+
+    Route::get('/data_angsuran', [DataAngsuranController::class, 'index'])->name('dataangsuran');
+    Route::post('/data_angsuran', [DataAngsuranController::class, 'store'])->name('storedataangsuran');
+    Route::post('/data_angsuran/{id}', [DataAngsuranController::class, 'updatedataangsuran'])->name('suratdisimpan');
+    Route::get('/{id}/detail_dataangsuran', [DetailDataAngsuranController::class, 'index'])->name('detail_dataangsuran');
 
     Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
 
@@ -51,10 +60,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/surat_keluar', [SuratKeluarController::class, 'suratkeluar'])->name('suratkeluar');
 });
 
-Route::group(['middleware' => ['role:super-admin|admin|kamus']], function () {
-    Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
-    Route::post('/disposisi', [DisposisiController::class, 'store'])->name('store_disposisi');
-    Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
-});
+// Route::group(['middleware' => ['role:super-admin|admin|kamus']], function () {
+//     Route::get('/disposisi', [DisposisiController::class, 'disposisi'])->name('disposisi');
+//     Route::post('/disposisi', [DisposisiController::class, 'store'])->name('store_disposisi');
+//     Route::get('/action_disposisi', [ActionDisposisiController::class, 'action'])->name('action_disposisi');
+// });
 
 require __DIR__ . '/auth.php';

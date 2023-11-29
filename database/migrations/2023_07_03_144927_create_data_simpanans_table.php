@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('surat_masuks', function (Blueprint $table) {
+        Schema::create('data_simpanans', function (Blueprint $table) {
             $table->id();
-            $table->string('dari');
-            $table->string('no_surat');
-            $table->string('perihal');
+            $table->string('Nama Anggota');
+            $table->string('Id_Anggota');
+            $table->string('Nominal');
             $table->string('keterangan');
-            $table->enum('status', ['baru','ditakahkan','diterima', 'ditolak'])->default('baru');
+            $table->enum('status', ['baru', 'disimpan', 'diterima', 'ditolak'])->default('baru');
             $table->dateTime('ditakahkan_at')->nullable();
             $table->dateTime('disposisi_at')->nullable();
             $table->unsignedBigInteger('author_id');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('surat_masuks');
+        Schema::dropIfExists('data_simpanans');
     }
 };

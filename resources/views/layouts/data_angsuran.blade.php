@@ -45,7 +45,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <code>{{ $kepada }}</code> -->
                         @foreach ($datas as $data)
                             <tr>
                                 <td>{{ $data->id }}</td>

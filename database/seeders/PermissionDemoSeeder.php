@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\DivisiMuseum;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PermissionDemoSeeder extends Seeder
@@ -21,81 +21,76 @@ class PermissionDemoSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
-        Permission::create(['name' => 'view surat_masuk']);
-        Permission::create(['name' => 'create surat_masuk']);
-        Permission::create(['name' => 'view surat_ditakahkan']);
-        Permission::create(['name' => 'surat_masuk ditakahkan']);
-        Permission::create(['name' => 'view diposisi']);
-        Permission::create(['name' => 'create diposisi']);
-        
+        Permission::create(['name' => 'view data_simpanan']);
+        Permission::create(['name' => 'create data_simpanan']);
+        Permission::create(['name' => 'view data_pinjaman']);
+        Permission::create(['name' => 'create data_pinjaman']);
+        Permission::create(['name' => 'view data_angsuran']);
+        Permission::create(['name' => 'create data_angsuran']);
 
         //create roles and assign existing permissions
         $adminRole = Role::create(['name' => 'admin']);
-        $adminRole->givePermissionTo('view surat_masuk');
-        $adminRole->givePermissionTo('create surat_masuk');
-        $adminRole->givePermissionTo('view surat_ditakahkan');
-        $adminRole->givePermissionTo('surat_masuk ditakahkan');
-        $adminRole->givePermissionTo('view diposisi');
-        $adminRole->givePermissionTo('create diposisi');
-        
+        $adminRole->givePermissionTo('view data_simpanan');
+        $adminRole->givePermissionTo('create data_simpanan');
+        $adminRole->givePermissionTo('view data_pinjaman');
+        $adminRole->givePermissionTo('create data_pinjaman');
+        $adminRole->givePermissionTo('view data_angsuran');
+        $adminRole->givePermissionTo('create data_angsuran');
 
-        $kamusRole = Role::create(['name' => 'kamus']);
-        $kamusRole->givePermissionTo('view surat_masuk');
-        $kamusRole->givePermissionTo('create surat_masuk');
-        $kamusRole->givePermissionTo('view surat_ditakahkan');
-        $kamusRole->givePermissionTo('surat_masuk ditakahkan');
-        $kamusRole->givePermissionTo('view diposisi');
-        $kamusRole->givePermissionTo('create diposisi');
+        $ketuaRole = Role::create(['name' => 'ketua']);
+        $ketuaRole->givePermissionTo('view data_simpanan');
+        $ketuaRole->givePermissionTo('create data_simpanan');
+        $ketuaRole->givePermissionTo('view data_pinjaman');
+        $ketuaRole->givePermissionTo('create data_pinjaman');
+        $ketuaRole->givePermissionTo('view data_angsuran');
+        $ketuaRole->givePermissionTo('create data_angsuran');
 
-        $adminTaudRole = Role::create(['name' => 'admintaud']);
-        $adminTaudRole->givePermissionTo('view surat_masuk');
-        $adminTaudRole->givePermissionTo('create surat_masuk');
-        $adminTaudRole->givePermissionTo('view surat_ditakahkan');
-        $adminTaudRole->givePermissionTo('surat_masuk ditakahkan');
-        // $adminTaudRole->givePermissionTo('view diposisi');
-        // $adminTaudRole->givePermissionTo('create diposisi');
+        $bendaharaRole = Role::create(['name' => 'bendahara']);
+        $bendaharaRole->givePermissionTo('view data_simpanan');
+        $bendaharaRole->givePermissionTo('create data_simpanan');
+        $bendaharaRole->givePermissionTo('view data_pinjaman');
+        $bendaharaRole->givePermissionTo('create data_pinjaman');
+        $bendaharaRole->givePermissionTo('view data_angsuran');
+        $bendaharaRole->givePermissionTo('create data_angsuran');
 
-        $stafftaudRole = Role::create(['name' => 'stafftaud']);
-        $stafftaudRole->givePermissionTo('view surat_masuk');
-        $stafftaudRole->givePermissionTo('create surat_masuk');
-        $stafftaudRole->givePermissionTo('view surat_ditakahkan');
-        // $stafftaudRole->givePermissionTo('surat_masuk ditakahkan');
-        // $stafftaudRole->givePermissionTo('view diposisi');
-        // $stafftaudRole->givePermissionTo('create diposisi');
-
-        $superadminRole = Role::create(['name' => 'super-admin']);
-        // gets all permissions via Gate::before rule
+        $anggotaRole = Role::create(['name' => 'anggota']);
+        $anggotaRole->givePermissionTo('view data_simpanan');
+        $anggotaRole->givePermissionTo('create data_simpanan');
+        $anggotaRole->givePermissionTo('view data_pinjaman');
+        $anggotaRole->givePermissionTo('create data_pinjaman');
+        $anggotaRole->givePermissionTo('view data_angsuran');
+        $anggotaRole->givePermissionTo('create data_angsuran');
 
         // create superadmintaud
         $user = User::factory()->create([
-            'name' => 'SuperAdmin',
-            'email' => 'superadmintaud@gmail.com',
-            'password' => bcrypt('12345678')
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('12345678'),
         ]);
         $user->assignRole($adminRole);
 
         // create kamus
         $user = User::factory()->create([
-            'name' => 'Revanza Marsapala',
-            'email' => 'revanzamarsapala11@gmail.com',
-            'password' => bcrypt('12345678')
+            'name' => 'ketua',
+            'email' => 'ketua@gmail.com',
+            'password' => bcrypt('12345678'),
         ]);
-        $user->assignRole($kamusRole);
+        $user->assignRole($ketuaRole);
 
         // create admintaud
         $user = User::factory()->create([
-            'name' => 'Admin Taud',
-            'email' => 'admintaud@gmail.com',
-            'password' => bcrypt('12345678')
+            'name' => 'bendahara',
+            'email' => 'bendahara@gmail.com',
+            'password' => bcrypt('12345678'),
         ]);
-        $user->assignRole($adminTaudRole);
+        $user->assignRole($bendaharaRole);
 
         // create stafftaud
         $user = User::factory()->create([
-            'name' => 'Staff Taud ',
-            'email' => 'stafftaud@gmail.com',
-            'password' => bcrypt('12345678')
+            'name' => 'anggota',
+            'email' => 'anggota@gmail.com',
+            'password' => bcrypt('12345678'),
         ]);
-        $user->assignRole($stafftaudRole);
+        $user->assignRole($anggotaRole);
     }
 }

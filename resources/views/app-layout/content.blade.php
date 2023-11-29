@@ -20,12 +20,12 @@
         <div class="small-box bg-info">
             <div class="inner">
                 <h3>{{ $countsuratmasuk }}</h3>
-                <p>Surat Masuk</p>
+                <p>Data Simpanan</p>
             </div>
             <div class="icon">
                 <i class="ion ion-email"></i>
             </div>
-            <a href="{{ route('suratmasuk') }}" class="small-box-footer">Lihat Info <i
+            <a href="{{ route('datasimpanan') }}" class="small-box-footer">Lihat Info <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
@@ -33,12 +33,13 @@
         <div class="small-box bg-warning">
             <div class="inner">
                 <h3>{{ $countditakahkan }}</h3>
-                <p>Surat Ditakahkan</p>
+                <p>Data Pinjaman</p>
             </div>
             <div class="icon">
                 <i class=" ion ion-email"></i>
             </div>
-            <a href="#" class="small-box-footer">Lihat Info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('datapinjaman') }}" class="small-box-footer">Lihat Info <i
+                    class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <div class="col-lg-3 col-6">
@@ -46,12 +47,12 @@
         <div class="small-box bg-success">
             <div class="inner">
                 <h3>{{ $countsuratditerima }}</h3>
-                <p>Surat Diterima</p>
+                <p>Data Angsuran</p>
             </div>
             <div class="icon">
                 <i class="ion ion-email"></i>
             </div>
-            <a href="{{ route('suratkeluar') }}" class="small-box-footer">Lihat Info <i
+            <a href="{{ route('dataangsuran') }}" class="small-box-footer">Lihat Info <i
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
