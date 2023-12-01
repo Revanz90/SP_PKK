@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DataSimpanan extends Model
+class Saving extends Model
 {
     use HasFactory;
 
@@ -26,8 +26,8 @@ class DataSimpanan extends Model
         return 'badge-secondary';
     }
 
-    public function disposisis()
-    {
-        return $this->hasMany(Disposisi::class, 'suratmasuk_id', 'id');
-    }
+    // public function disposisis()
+    // {
+    //     return $this->hasMany(Disposisi::class, 'suratmasuk_id', 'id');
+    // }
 }

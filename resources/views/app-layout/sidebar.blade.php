@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="dashboard" class="brand-link">
         <img src="img/Logo PKK.png" alt="Lambang_TNI_AU" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">SP_PKK</span>
+        <span class="brand-text font-weight-light">Simpan Pinjam PKK</span>
     </a>
 
     <!-- Sidebar -->
@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-header">MAIN MENU</li>
-                <li class="nav-item {{ request()->routeIs('suratmasuk') ? 'menu-open' : '' }}">
+                <li class="nav-item {{ request()->routeIs('datasimpanan') ? 'menu-open' : '' }}">
                     <a href="{{ route('datasimpanan') }}" class="nav-link">
                         <i class="nav-icon far fa-folder-open"></i>
                         <p>
@@ -43,7 +43,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('ditakahkan') ? 'menu-open' : '' }}">
+                <li class="nav-item {{ request()->routeIs('datapinjaman') ? 'menu-open' : '' }}">
                     <a href="{{ route('datapinjaman') }}" class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
@@ -52,7 +52,7 @@
                     </a>
                 </li>
                 {{-- @hasrole('super-admin|admin|kamus') --}}
-                <li class="nav-item {{ request()->routeIs('disposisi') ? 'menu-open' : '' }}">
+                <li class="nav-item {{ request()->routeIs('dataangsuran') ? 'menu-open' : '' }}">
                     <a href="{{ route('dataangsuran') }}" class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>

@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_simpanans', function (Blueprint $table) {
+        Schema::create('credits', function (Blueprint $table) {
             $table->id();
-            $table->string('Nama Anggota');
-            $table->string('Id_Anggota');
-            $table->string('Nominal');
+            $table->integer('nominal_uang');
             $table->string('keterangan');
+            $table->timestamp('tanggal_transfer');
             $table->enum('status', ['baru', 'disimpan', 'diterima', 'ditolak'])->default('baru');
-            $table->dateTime('ditakahkan_at')->nullable();
-            $table->dateTime('disposisi_at')->nullable();
             $table->unsignedBigInteger('author_id');
+            $table->string('author_name');
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('users');
+
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_simpanans');
+        Schema::dropIfExists('credits');
     }
 };

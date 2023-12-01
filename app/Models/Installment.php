@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DataPinjaman extends Model
+class Installment extends Model
 {
     use HasFactory;
 
@@ -24,10 +24,5 @@ class DataPinjaman extends Model
             }
         }
         return 'badge-secondary';
-    }
-
-    public function disposisis()
-    {
-        return $this->hasMany(Disposisi::class, 'suratmasuk_id', 'id');
     }
 }

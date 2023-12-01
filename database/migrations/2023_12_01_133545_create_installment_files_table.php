@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('divisi_museums', function (Blueprint $table) {
+        Schema::create('installment_files', function (Blueprint $table) {
             $table->id();
-            $table->string('divisi');
+            $table->string('files');
+            $table->unsignedBigInteger('id_installments');
             $table->timestamps();
+
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisi_museums');
+        Schema::dropIfExists('installment_files');
     }
 };

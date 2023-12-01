@@ -6,8 +6,9 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <br>
-                    <h5><strong>TATA NASKAH MUSEUM PUSAT TNI AU DIRGANTARA MANDALA</strong></h5>
-                    <h6>Sistem pengarsipan Surat Masuk</h6>
+                    <h5><strong>Simpan Pinjam PKK</strong></h5>
+                    <h6>Sistem Informasi Simpan Pinjam Pemberdayaan
+                        Kesejahteraan Keluarga (PKK) Kelurahan Kalitirto, Berbah, Sleman</h6>
                 </div>
             </div>
         </div>
@@ -19,7 +20,7 @@
         <!-- small box -->
         <div class="small-box bg-info">
             <div class="inner">
-                <h3>{{ $countsuratmasuk }}</h3>
+                <h3>{{ $countsaving }}</h3>
                 <p>Data Simpanan</p>
             </div>
             <div class="icon">
@@ -32,7 +33,7 @@
     <div class="col-lg-3 col-6">
         <div class="small-box bg-warning">
             <div class="inner">
-                <h3>{{ $countditakahkan }}</h3>
+                <h3>{{ $countcredit }}</h3>
                 <p>Data Pinjaman</p>
             </div>
             <div class="icon">
@@ -46,7 +47,7 @@
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>{{ $countsuratditerima }}</h3>
+                <h3>{{ $countinstalment }}</h3>
                 <p>Data Angsuran</p>
             </div>
             <div class="icon">
@@ -56,7 +57,7 @@
                     class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <div class="col-lg-3 col-6">
+    {{-- <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-danger">
             <div class="inner">
@@ -68,7 +69,7 @@
             </div>
             <a href="#" class="small-box-footer">Lihat Info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 <section class="col-lg-12">

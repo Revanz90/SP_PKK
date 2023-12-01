@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Takah Museum | Forgot Password</title>
+    <title>Simpan Pinjam | Forgot Password</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -21,7 +21,7 @@
     <div class="login-box">
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="{{ asset('AdminLTE/plugins/') }}" class="h1">TAKAH Museum</a>
+                <a href="{{ asset('AdminLTE/plugins/') }}" class="h1">Simpan Pinjam</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg"> Lupa password? Disini dapat dengan mudah mengubah password baru.</p>

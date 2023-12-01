@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_angsurans', function (Blueprint $table) {
+        Schema::create('savings', function (Blueprint $table) {
             $table->id();
-            $table->string('pesan_disposisi');
-            $table->unsignedBigInteger('suratmasuk_id');
+            $table->integer('nominal_uang');
+            $table->string('keterangan');
+            $table->timestamp('tanggal_transfer');
+            $table->enum('status', ['baru', 'disimpan', 'diterima', 'ditolak'])->default('baru');
             $table->unsignedBigInteger('author_id');
-            $table->unsignedBigInteger('tembusan_ke');
+            $table->string('author_name');
             $table->timestamps();
+
             $table->foreign('author_id')->references('id')->on('users');
-            $table->foreign('suratmasuk_id')->references('id')->on('surat_masuks');
-            $table->foreign('tembusan_ke')->references('id')->on('divisi_museums');
+
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_angsurans');
+        Schema::dropIfExists('savings');
     }
 };

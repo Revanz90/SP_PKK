@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TAKAH MUSEUM | Registrasi</title>
+    <title>Simpan Pinjam | Registrasi</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -21,7 +21,7 @@
     <div class="register-box">
         <div class="card card-outline card-info">
             <div class="card-header text-center">
-                <a href="" class="h1"> Takah Museum</a>
+                <a href="" class="h1"> Simpan Pinjam</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Registrasi Disini!</p>
