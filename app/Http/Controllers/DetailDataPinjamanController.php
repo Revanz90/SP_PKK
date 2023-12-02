@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataPinjaman;
-use App\Models\FileDataPinjaman;
+use App\Models\Credit;
+use App\Models\CreditFile;
 
-class DetailDataSimpananController extends Controller
+class DetailDataPinjamanController extends Controller
 {
     public function index($id)
     {
-        $data = DataPinjaman::find($id);
-        $file = FileDataPinjaman::where('id_suratmasuk', $data->id)->first();
-        return view('layouts.detail_suratmasuk', ['data' => $data, 'file' => $file]);
+        $data = Credit::find($id);
+        $file = CreditFile::where('id_credits', $data->id)->first();
+        return view('layouts.detail_datapinjaman', ['data' => $data, 'file' => $file]);
     }
 }
