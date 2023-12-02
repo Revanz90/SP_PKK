@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="dashboard" class="brand-link">
-        <img src="img/Logo PKK.png" alt="Lambang_TNI_AU" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="img/Logo-PKK.png" alt="Logo PKK" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Simpan Pinjam PKK</span>
     </a>
 

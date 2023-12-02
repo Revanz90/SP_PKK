@@ -4,7 +4,7 @@ use App\Http\Controllers\AkunController;
 use App\Http\Controllers\CreditController;
 use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DetailDisposisiController;
+use App\Http\Controllers\DetailDataSimpananController;
 use App\Http\Controllers\DitakahkanController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\SavingController;

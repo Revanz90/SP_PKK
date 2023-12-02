@@ -70,13 +70,8 @@
                                 <td>{{ $data->status }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
                                     <div class="btn btn-xs btn-info {{ $data->status_surat_masuk }}">
-                                        {{ Str::upper($data->status) }}</div>
-                                    {{-- <a class="btn btn-info btn-xs"
-                                        href=" {{ route('detail_suratmasuk', ['id' => $data->id]) }}">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        Lihat
-                                    </a> --}}
+                                        {{ Str::upper($data->status) }}
+                                    </div>
                                     {{-- @if ($data->ditakahkan_at == null)
                                         <form method="POST" action="{{ route('suratditakahkan', ['id' => $data->id]) }}">
                                             @csrf
@@ -84,6 +79,12 @@
                                         </form>
                                     @endif --}}
                                 </td>
+                                <td><a class="btn btn-info btn-xs text-center d-flex flex-column align-items-stretch"
+                                        href=" {{ route('detail_datasimpanan', ['id' => $data->id]) }}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        Lihat
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
