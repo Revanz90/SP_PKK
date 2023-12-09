@@ -37,6 +37,10 @@
                 <div class="card-tools">
                     <input type="hidden" name="xnull" id="statusxid[2]" value="2">
                     <div class="project-actions text-center">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                            <i class="fas fa-plus"></i>
+                            CETAK
+                        </button>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-plus"></i>
                             TAMBAH
@@ -71,19 +75,14 @@
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
                                     <div class="btn btn-xs btn-info {{ $data->status_surat_masuk }}">
                                         {{ Str::upper($data->status) }}</div>
-                                    {{-- <a class="btn btn-info btn-xs"
-                                        href=" {{ route('detail_suratmasuk', ['id' => $data->id]) }}">
+                                </td>
+                                <td>
+                                    <a class="btn btn-info btn-xs text-center d-flex flex-column align-items-stretch"
+                                        href=" {{ route('detail_dataangsuran', ['id' => $data->id]) }}">
                                         <i class="fas fa-folder">
                                         </i>
                                         Lihat
-                                    </a> --}}
-                                    {{-- @if ($data->ditakahkan_at == null)
-                                        <form method="POST" action="{{ route('suratditakahkan', ['id' => $data->id]) }}">
-                                            @csrf
-                                            <button class="btn btn-primary btn-xs w-100">Takahkan</button>
-                                        </form>
-                                    @endif --}}
-                                </td>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -148,8 +147,8 @@
 
                                                 <div class="form-group row">
                                                     <label for="proposal_ProposalTA"
-                                                        class="col-sm-2 col-form-label font-weight-normal">Upload Syarat
-                                                        Pinjaman</label>
+                                                        class="col-sm-2 col-form-label font-weight-normal">Upload Bukti
+                                                        Transfer</label>
                                                     <div class="col-sm-10">
                                                         <input type="file" name="upload_bukti" class="form-control"
                                                             required>
@@ -171,7 +170,8 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <div class="btn-savechange-reset">
                         <button type="reset" class="btn btn-sm btn-warning" style="margin-right: 5px">Reset</button>
-                        <button type="submit" form="angsuranform" value="Submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" form="angsuranform" value="Submit"
+                            class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>

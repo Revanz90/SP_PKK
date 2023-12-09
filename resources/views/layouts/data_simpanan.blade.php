@@ -37,6 +37,10 @@
                 <div class="card-tools">
                     <input type="hidden" name="xnull" id="statusxid[2]" value="2">
                     <div class="project-actions text-center">
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+                            <i class="fas fa-plus"></i>
+                            CETAK
+                        </button>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-plus"></i>
                             TAMBAH
@@ -66,20 +70,14 @@
                                 <td>{{ $data->author_id }}</td>
                                 <td>{{ $data->author_name }}</td>
                                 <td>{{ $data->nominal_uang }}</td>
+                                <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->keterangan }}</td>
-                                <td>{{ $data->status }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
-                                    <div class="btn btn-xs btn-info {{ $data->status_surat_masuk }}">
-                                        {{ Str::upper($data->status) }}
-                                    </div>
-                                    {{-- @if ($data->ditakahkan_at == null)
-                                        <form method="POST" action="{{ route('suratditakahkan', ['id' => $data->id]) }}">
-                                            @csrf
-                                            <button class="btn btn-primary btn-xs w-100">Takahkan</button>
-                                        </form>
-                                    @endif --}}
+                                    <div class="btn btn-xs btn-info {{ $data->status_saving }}">
+                                        {{ Str::ucfirst($data->status_saving) }}</div>
                                 </td>
-                                <td><a class="btn btn-info btn-xs text-center d-flex flex-column align-items-stretch"
+                                <td>
+                                    <a class="btn btn-info btn-xs text-center d-flex flex-column align-items-stretch"
                                         href=" {{ route('detail_datasimpanan', ['id' => $data->id]) }}">
                                         <i class="fas fa-folder">
                                         </i>
@@ -173,7 +171,8 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <div class="btn-savechange-reset">
                         <button type="reset" class="btn btn-sm btn-warning" style="margin-right: 5px">Reset</button>
-                        <button type="submit" form="simpananform" value="Submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" form="simpananform" value="Submit"
+                            class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>

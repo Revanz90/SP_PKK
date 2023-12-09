@@ -43,7 +43,7 @@ class SavingController extends Controller
 
                 // Menyimpan data pada storage local
                 Storage::putFileAs('public/files', $request->upload_bukti, $fileName);
-                // Menyimpan File pada database File Surat Masuk
+                // Menyimpan File pada database File Data Simpanan
                 $fileSaving->files = $fileName;
                 $fileSaving->id_savings = $saving->id;
                 $fileSaving->save();
@@ -59,7 +59,6 @@ class SavingController extends Controller
     {
         $data = Saving::find($id);
         $data->status = 'disimpan';
-        // $data->ditakahkan_at = now();
         $data->save();
 
         // return redirect()->route('ditakahkan')->with('success', 'Berhasil Diterima');

@@ -6,15 +6,39 @@
 
 @section('content')
     <div id="xtest" style="font-size: 14px"></div>
-    <div class="callout callout-warning">
-        <i class="fas fa-info-circle"></i>
-        Halaman untuk melihat detail data pinjaman
-    </div>
     <div class="card">
-        <div class="card-header">
-            <h4 class="card-title font-weight-bold">DATA PINJAMAN</h4>
-            <div class="card-tools">
-                <input type="hidden" name="statusM" id="statusMid[2]" value="2">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+        <div class="d-flex bd-highlight card-header">
+            <h4 class="p-2 flex-grow-1 bd-highlight card-title font-weight-bold">DATA PINJAMAN</h4>
+            <div>
+                @if ($data->status_ketua == 'baru')
+                    @hasrole('admin|ketua')
+                        <form method="POST" action="{{ route('update.statususer', ['id' => $data->id]) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-check"></i>
+                                Diterima
+                            </button>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-times"></i>
+                                Ditolak
+                            </button>
+                        </form>
+                    @endhasrole
+                @endif
+
             </div>
         </div>
         {{-- @foreach ($datadetailsm as $data) --}}
@@ -53,8 +77,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Surat
-                        Masuk File</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Syarat Pinjaman File</label>
                     <div class="card-footer bg-white col-sm-10">
                         <p><a href="{{ url('storage/files/' . $file->files) }}"
                                 class="mailbox-attachment-name"><u>{{ $file->files }}</u></a></p>

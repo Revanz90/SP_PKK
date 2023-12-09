@@ -49,17 +49,16 @@ class InstallmentController extends Controller
                 $installmentfile->save();
             }
 
-            return redirect()->back()->with('success', 'Berhasil menambahkan Surat');
+            return redirect()->back()->with('success', 'Berhasil menambahkan Angsuran');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Gagal menambahkan Surat');
+            return redirect()->back()->with('error', 'Gagal menambahkan Angsuran');
         }
     }
 
-    public function updatedatasimpanan($id)
+    public function updatedataangsuran($id)
     {
         $data = Installment::find($id);
         $data->status = 'disimpan';
-        // $data->ditakahkan_at = now();
         $data->save();
 
         // return redirect()->route('ditakahkan')->with('success', 'Berhasil DItakahkan');

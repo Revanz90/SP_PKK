@@ -55,15 +55,12 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label font-weight-normal">Bukti Transfer</label>
                     <div class="card-footer bg-white col-sm-10">
+                        <embed type="application/pdf" src="{{ url('storage/files/' . $file->files) }}" id="pdf-embed"
+                            frameborder="0" width="100%" height="780">
                         {{-- <p>
-                            File Path: {{ url('storage/files/' . $file->files) }} <br>
-                            File Exists:
-                            {{ file_exists(public_path('storage/files/' . $file->files)) ? 'Yes' : 'No' }}
-                        </p> --}}
-                        <p>
                             <a href="{{ url('storage/files/' . $file->files) }}"
                                 class="mailbox-attachment-name"><u>{{ $file->files }}</u></a>
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
             </form>

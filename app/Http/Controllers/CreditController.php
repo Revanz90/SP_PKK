@@ -7,9 +7,12 @@ use App\Models\CreditFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Traits\HasRoles;
 
 class CreditController extends Controller
 {
+    use HasRoles;
+
     public function index()
     {
         $credit = Credit::all()->sortByDesc('created_at');
@@ -35,6 +38,8 @@ class CreditController extends Controller
             $credit->keterangan = $request->input('keterangan');
             $credit->author_id = Auth::id();
             $credit->author_name = Auth::user()->name;
+            $credit->loan_interest = 0;
+            $credit->penalty = 0;
             $credit->save();
 
             // Melakukan pengecekan jika inputan memiliki File
@@ -43,26 +48,31 @@ class CreditController extends Controller
 
                 // Menyimpan data pada storage local
                 Storage::putFileAs('public/files', $request->upload_bukti, $fileName);
-                // Menyimpan File pada database File Surat Masuk
+                // Menyimpan File pada database File Data Pinjaman
                 $fileCredit->files = $fileName;
                 $fileCredit->id_credits = $credit->id;
                 $fileCredit->save();
             }
 
-            return redirect()->back()->with('success', 'Berhasil menambahkan Simpanan');
+            return redirect()->back()->with('success', 'Berhasil menambahkan Pinjaman');
         } catch (\Throwable $th) {
             dd($th);
-            return redirect()->back()->with('error', 'Gagal menambahkan Simpanan');
+            return redirect()->back()->with('error', 'Gagal menambahkan Pinjaman');
         }
     }
 
-    public function updatedatasimpanan($id)
+    public function updatestatususer($id)
     {
-        $data = Credit::find($id);
-        $data->status = 'disimpan';
-        // $data->ditakahkan_at = now();
-        $data->save();
+        // $user = Auth::user();
 
-        // return redirect()->route('ditakahkan')->with('success', 'Berhasil Diterima');
+        $credit = Credit::find($id);
+        $credit->status_credit = 'diterima';
+        $credit->status_ketua = 'diterima';
+        $credit->loan_interest = 0.05;
+        $credit->penalty = 5000;
+        $credit->save();
+
+        return redirect()->back()->with('success', 'Status Ketua Diterima');
+
     }
 }

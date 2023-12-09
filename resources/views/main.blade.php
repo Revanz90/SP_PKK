@@ -8,7 +8,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="img/Logo-PKK.png" alt="AdminLTELogo" height="100" width="100">
+            <img class="animation__shake" src="/img/Logo-PKK.png" alt="LogoPKK" height="100" width="100">
         </div>
 
         @include('app-layout.navbar')

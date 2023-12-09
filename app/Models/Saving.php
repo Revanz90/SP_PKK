@@ -9,25 +9,18 @@ class Saving extends Model
 {
     use HasFactory;
 
-    public function getStatusSuratMasukAttribute()
+    public function getStatusSavingAttribute()
     {
-        if (isset($this->attributes['status']) && $this->attributes['status']) {
-            switch ($this->attributes['status']) {
+        if (isset($this->attributes['status_saving']) && $this->attributes['status_saving']) {
+            switch ($this->attributes['status_saving']) {
                 case 'diterima':
                     return "badge-success";
                 case 'ditolak':
                     return "badge-danger";
                 case 'baru':
                     return "badge-primary";
-                case 'ditakahkan':
-                    return "badge-secondary";
             }
         }
-        return 'badge-secondary';
+        return 'badge-primary';
     }
-
-    // public function disposisis()
-    // {
-    //     return $this->hasMany(Disposisi::class, 'suratmasuk_id', 'id');
-    // }
 }
