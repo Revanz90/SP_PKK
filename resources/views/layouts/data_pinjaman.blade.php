@@ -73,7 +73,7 @@
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
-                                    <div class="btn btn-xs btn-info {{ $data->status_credit }}">
+                                    <div class="btn btn-xs {{ $data->status_credit_masuk }}">
                                         {{ Str::ucfirst($data->status_credit) }}</div>
                                 </td>
                                 <td>

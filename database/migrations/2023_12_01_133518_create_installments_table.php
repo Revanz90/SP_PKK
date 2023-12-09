@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('status', ['baru', 'disimpan', 'diterima', 'ditolak'])->default('baru');
             $table->unsignedBigInteger('author_id');
             $table->string('author_name');
+            $table->unsignedBigInteger('credit_id');
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('users');

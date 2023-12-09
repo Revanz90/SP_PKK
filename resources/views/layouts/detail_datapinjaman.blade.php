@@ -22,16 +22,16 @@
         @endif
         <div class="d-flex bd-highlight card-header">
             <h4 class="p-2 flex-grow-1 bd-highlight card-title font-weight-bold">DATA PINJAMAN</h4>
-            <div>
+            <div>s
                 @if ($data->status_ketua == 'baru')
                     @hasrole('admin|ketua')
-                        <form method="POST" action="{{ route('update.statususer', ['id' => $data->id]) }}">
+                        <form method="POST" action="{{ route('creditstatus', ['id' => $data->id]) }}">
                             @csrf
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-success" value="diterima" name="c">
                                 <i class="fas fa-check"></i>
                                 Diterima
                             </button>
-                            <button type="submit" class="btn btn-danger">
+                            <button type="submit" class="btn btn-danger" value="ditolak" name="c">
                                 <i class="fas fa-times"></i>
                                 Ditolak
                             </button>

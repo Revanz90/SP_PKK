@@ -9,16 +9,19 @@ class Saving extends Model
 {
     use HasFactory;
 
-    public function getStatusSavingAttribute()
+    public function getStatusSavingMasukAttribute()
     {
-        if (isset($this->attributes['status_saving']) && $this->attributes['status_saving']) {
-            switch ($this->attributes['status_saving']) {
+        if (isset($this->attributes['status']) && $this->attributes['status']) {
+            switch ($this->attributes['status']) {
+                case 'baru':
+                    return "badge-primary";
+                case 'disimpan':
+                    return "badge-secondary";
                 case 'diterima':
                     return "badge-success";
                 case 'ditolak':
                     return "badge-danger";
-                case 'baru':
-                    return "badge-primary";
+
             }
         }
         return 'badge-primary';

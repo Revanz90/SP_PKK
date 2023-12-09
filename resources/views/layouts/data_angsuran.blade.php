@@ -73,7 +73,7 @@
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
-                                    <div class="btn btn-xs btn-info {{ $data->status_surat_masuk }}">
+                                    <div class="btn btn-xs btn-info {{ $data->status_angsuran_masuk }}">
                                         {{ Str::upper($data->status) }}</div>
                                 </td>
                                 <td>

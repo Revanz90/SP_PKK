@@ -7,8 +7,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailDataAngsuranController;
 use App\Http\Controllers\DetailDataPinjamanController;
 use App\Http\Controllers\DetailDataSimpananController;
-use App\Http\Controllers\DitakahkanController;
 use App\Http\Controllers\InstallmentController;
+use App\Http\Controllers\MonthlyReportController;
 use App\Http\Controllers\SavingController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,21 +42,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/data_simpanan', [SavingController::class, 'index'])->name('datasimpanan');
     Route::post('/data_simpanan', [SavingController::class, 'store'])->name('storedatasimpanan');
     Route::get('/{id}/detail_datasimpanan', [DetailDataSimpananController::class, 'index'])->name('detail_datasimpanan');
-    Route::post('/data_simpanan/{id}', [SavingController::class, 'updatedatasimpanan'])->name('suratdisimpan');
 
     Route::get('/data_pinjaman', [CreditController::class, 'index'])->name('datapinjaman');
     Route::post('/data_pinjaman', [CreditController::class, 'store'])->name('storedatapinjaman');
     Route::get('/{id}/detail_datapinjaman', [DetailDataPinjamanController::class, 'index'])->name('detail_datapinjaman');
-    Route::post('/{id}/update-status', [CreditController::class, 'updatestatususer'])->name('update.statususer');
+    Route::post('/{id}/update-status', [CreditController::class, 'updatestatuscredit'])->name('creditstatus');
 
     Route::get('/data_angsuran', [InstallmentController::class, 'index'])->name('dataangsuran');
     Route::post('/data_angsuran', [InstallmentController::class, 'store'])->name('storedataangsuran');
     Route::get('/{id}/detail_dataangsuran', [DetailDataAngsuranController::class, 'index'])->name('detail_dataangsuran');
-    Route::post('/data_angsuran/{id}', [InstallmentController::class, 'updatedataangsuran'])->name('suratdisimpan');
 
-    Route::get('/ditakahkan', [DitakahkanController::class, 'ditakahkan'])->name('ditakahkan');
-
-    Route::post('/{id}/detail_disposisi', [DetailDisposisiController::class, 'detaildisposisi'])->name('detail_disposisi');
+    Route::get('/monthly_report', [MonthlyReportController::class, 'monthly'])->name('laporan_bulanan');
 });
 
 require __DIR__ . '/auth.php';

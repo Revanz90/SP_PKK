@@ -37,10 +37,10 @@
                 <div class="card-tools">
                     <input type="hidden" name="xnull" id="statusxid[2]" value="2">
                     <div class="project-actions text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
-                            <i class="fas fa-plus"></i>
-                            CETAK
-                        </button>
+                        <a href="{{ route('laporan_bulanan') }}" class="btn btn-warning" role="button"
+                            data-bs-toggle="button">
+                            <i class="fas fa-print"></i>
+                            CETAK BULANAN</a>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-plus"></i>
                             TAMBAH
@@ -73,8 +73,8 @@
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
-                                    <div class="btn btn-xs btn-info {{ $data->status_saving }}">
-                                        {{ Str::ucfirst($data->status_saving) }}</div>
+                                    <div class="btn btn-xs btn-primary {{ $data->status_saving_masuk }}">
+                                        {{ Str::ucfirst($data->status) }}</div>
                                 </td>
                                 <td>
                                     <a class="btn btn-info btn-xs text-center d-flex flex-column align-items-stretch"

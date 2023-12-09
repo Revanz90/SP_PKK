@@ -61,18 +61,33 @@ class CreditController extends Controller
         }
     }
 
-    public function updatestatususer($id)
+    public function updatestatuscredit(Request $request, $id)
     {
-        // $user = Auth::user();
+        $buttonValue = $request->input('c');
+        // dd($buttonValue);
 
-        $credit = Credit::find($id);
-        $credit->status_credit = 'diterima';
-        $credit->status_ketua = 'diterima';
-        $credit->loan_interest = 0.05;
-        $credit->penalty = 5000;
-        $credit->save();
+        if ($buttonValue == 'diterima') {
+            $credit = Credit::find($id);
+            $credit->status_credit = 'diterima';
+            $credit->status_ketua = 'diterima';
+            $credit->loan_interest = 0.05;
+            $credit->penalty = 5000;
+            $credit->due_date = 30;
+            $credit->save();
 
-        return redirect()->back()->with('success', 'Status Ketua Diterima');
+            return redirect()->back()->with('success', 'Pinjaman Ini Diterima');
+        }
+
+        if ($buttonValue == 'ditolak') {
+            $credit = Credit::find($id);
+            $credit->status_credit = 'ditolak';
+            $credit->status_ketua = 'ditolak';
+            $credit->loan_interest = 0;
+            $credit->penalty = 0;
+            $credit->save();
+
+            return redirect()->back()->with('error', 'Pinjaman ini Ditolak');
+        }
 
     }
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('status_ketua', ['baru', 'diterima', 'ditolak'])->default('baru');
             $table->double('loan_interest')->default(null);
             $table->double('penalty')->default(null);
+            $table->string('due_date')->default(0);
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('users');

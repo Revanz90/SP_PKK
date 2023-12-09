@@ -9,18 +9,19 @@ class Credit extends Model
 {
     use HasFactory;
 
-    public function getStatusCreditAttribute()
+    public function getStatusCreditMasukAttribute()
     {
         if (isset($this->attributes['status_credit']) && $this->attributes['status_credit']) {
             switch ($this->attributes['status_credit']) {
+                case 'baru':
+                    return "badge-primary";
                 case 'diterima':
                     return "badge-success";
                 case 'ditolak':
                     return "badge-danger";
-                case 'baru':
-                    return "badge-primary";
+
             }
         }
-        return 'badge-secondary';
+        return 'badge-primary';
     }
 }

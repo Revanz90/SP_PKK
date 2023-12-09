@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Installment;
 use App\Models\InstallmentFile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +19,8 @@ class InstallmentController extends Controller
 
     public function store(Request $request)
     {
+        $currentDate = Carbon::now();
+        // $futureDate = $currentDate ->addDays($);
         try {
             $installment = new Installment();
             $installmentfile = new InstallmentFile();
@@ -60,7 +63,5 @@ class InstallmentController extends Controller
         $data = Installment::find($id);
         $data->status = 'disimpan';
         $data->save();
-
-        // return redirect()->route('ditakahkan')->with('success', 'Berhasil DItakahkan');
     }
 }
