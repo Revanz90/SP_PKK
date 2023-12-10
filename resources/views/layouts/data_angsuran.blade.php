@@ -60,7 +60,7 @@
                             <th>Nominal</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
-                            <th>Status</th>
+                            {{-- <th>Status</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -72,10 +72,10 @@
                                 <td>{{ $data->nominal_uang }}</td>
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->keterangan }}</td>
-                                <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
+                                {{-- <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
                                     <div class="btn btn-xs btn-info {{ $data->status_angsuran_masuk }}">
                                         {{ Str::upper($data->status) }}</div>
-                                </td>
+                                </td> --}}
                                 <td>
                                     <a class="btn btn-info btn-xs text-center d-flex flex-column align-items-stretch"
                                         href=" {{ route('detail_dataangsuran', ['id' => $data->id]) }}">

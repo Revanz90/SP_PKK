@@ -58,7 +58,7 @@
                             <th>ID Anggota</th>
                             <th>Nama Anggota</th>
                             <th>Nominal</th>
-                            <th>Belum Lunas</th>
+                            <th>Sudah Terbayar</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
                             <th>Status Pinjaman</th>
@@ -71,7 +71,7 @@
                                 <td>{{ $data->author_id }}</td>
                                 <td>{{ $data->author_name }}</td>
                                 <td>{{ $data->nominal_uang }}</td>
-                                <td>Belum Lunas</td>
+                                <td>{{ $data->total_terbayar }}</td>
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">

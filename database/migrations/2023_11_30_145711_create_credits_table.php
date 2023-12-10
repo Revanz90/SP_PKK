@@ -22,7 +22,8 @@ return new class extends Migration
             $table->enum('status_ketua', ['baru', 'diterima', 'ditolak'])->default('baru');
             $table->double('loan_interest')->default(0);
             $table->double('penalty')->default(0);
-            $table->string('due_date')->nullable();
+            $table->double('count_pinalty')->default(0)->nullable();
+            $table->date('due_date')->default('2023-12-8');
             $table->double('total_terbayar')->default(0);
             $table->timestamps();
 

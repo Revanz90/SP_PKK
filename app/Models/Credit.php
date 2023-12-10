@@ -19,10 +19,12 @@ class Credit extends Model
             switch ($this->attributes['status_credit']) {
                 case 'baru':
                     return "badge-primary";
-                case 'diterima':
+                case 'aktif':
                     return "badge-success";
                 case 'ditolak':
                     return "badge-danger";
+                case 'lunas':
+                    return "badge-info";
 
             }
         }

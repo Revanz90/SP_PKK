@@ -34,7 +34,7 @@
                     @endif
                 @endhasrole
                 @if ($data->status_ketua == 'baru')
-                    @hasrole('admin|ketua|anggota')
+                    @hasrole('admin|ketua')
                         <form method="POST" action="{{ route('creditstatus', ['id' => $data->id]) }}">
                             @csrf
                             <button type="submit" class="btn btn-success" value="diterima" name="c">
@@ -75,6 +75,13 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Sudah Terbayar</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="" class="form-control" value="{{ $data->total_terbayar }}"
+                            readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label font-weight-normal">Tanggal</label>
                     <div class="col-sm-10">
                         <input type="date" name="" class="form-control" value="{{ $data->created_at }}" readonly>
@@ -84,6 +91,12 @@
                     <label for="" class="col-sm-2 col-form-label font-weight-normal">Keterangan</label>
                     <div class="col-sm-10">
                         <textarea type="text" name="" class="form-control text-bold" readonly>{{ $data->keterangan }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Status Pinjaman</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" name="" class="form-control text-bold" readonly>{{ Str::ucfirst($data->status_credit) }}</textarea>
                     </div>
                 </div>
                 <div class="form-group row">
