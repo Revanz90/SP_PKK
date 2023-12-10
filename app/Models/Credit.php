@@ -9,6 +9,10 @@ class Credit extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'belum_lunas',
+    ];
+
     public function getStatusCreditMasukAttribute()
     {
         if (isset($this->attributes['status_credit']) && $this->attributes['status_credit']) {

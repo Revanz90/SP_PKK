@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/data_pinjaman', [CreditController::class, 'index'])->name('datapinjaman');
     Route::post('/data_pinjaman', [CreditController::class, 'store'])->name('storedatapinjaman');
     Route::get('/{id}/detail_datapinjaman', [DetailDataPinjamanController::class, 'index'])->name('detail_datapinjaman');
+    Route::post('/{id}/detail_datapinjaman', [CreditController::class, 'storeInstallment'])->name('detail_datapinjaman');
     Route::post('/{id}/update-status', [CreditController::class, 'updatestatuscredit'])->name('creditstatus');
 
     Route::get('/data_angsuran', [InstallmentController::class, 'index'])->name('dataangsuran');

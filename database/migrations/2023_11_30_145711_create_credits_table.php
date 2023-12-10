@@ -20,9 +20,10 @@ return new class extends Migration
             $table->unsignedBigInteger('author_id');
             $table->string('author_name');
             $table->enum('status_ketua', ['baru', 'diterima', 'ditolak'])->default('baru');
-            $table->double('loan_interest')->default(null);
-            $table->double('penalty')->default(null);
+            $table->double('loan_interest')->default(0);
+            $table->double('penalty')->default(0);
             $table->string('due_date')->default(0);
+            $table->double('total_terbayar')->default(0);
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('users');

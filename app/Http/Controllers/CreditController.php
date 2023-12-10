@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Credit;
 use App\Models\CreditFile;
+use App\Models\Installment;
+use App\Models\InstallmentFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -38,8 +40,8 @@ class CreditController extends Controller
             $credit->keterangan = $request->input('keterangan');
             $credit->author_id = Auth::id();
             $credit->author_name = Auth::user()->name;
-            $credit->loan_interest = 0;
-            $credit->penalty = 0;
+            // $credit->loan_interest = 0;
+            // $credit->penalty = 0;
             $credit->save();
 
             // Melakukan pengecekan jika inputan memiliki File
@@ -73,6 +75,7 @@ class CreditController extends Controller
             $credit->loan_interest = 0.05;
             $credit->penalty = 5000;
             $credit->due_date = 30;
+
             $credit->save();
 
             return redirect()->back()->with('success', 'Pinjaman Ini Diterima');
@@ -84,9 +87,57 @@ class CreditController extends Controller
             $credit->status_ketua = 'ditolak';
             $credit->loan_interest = 0;
             $credit->penalty = 0;
+
             $credit->save();
 
             return redirect()->back()->with('error', 'Pinjaman ini Ditolak');
+        }
+
+    }
+
+    public function storeInstallment(Request $request, $id)
+    {
+        try {
+            $credit = Credit::find($id);
+            $installment = new Installment();
+            $fileInstallment = new InstallmentFile();
+
+            // Validasi yang wajib diinputkan pada request payloads
+            $validated = $request->validate([
+                'nominal' => 'required',
+                'tanggal_transaksi' => 'required',
+                'keterangan' => 'required',
+                'upload_bukti' => 'required',
+            ]);
+
+            $installment->nominal_uang = $request->input('nominal');
+            $installment->tanggal_transfer = $request->input('tanggal_transaksi');
+            $installment->keterangan = $request->input('keterangan');
+            $installment->author_id = Auth::id();
+            $installment->author_name = Auth::user()->name;
+            $installment->credit_id = $id;
+            $installment->save();
+
+            $hutang_terbayar = $credit->total_terbayar + $installment->nominal_uang = $request->input('nominal');
+            $credit->total_terbayar = $hutang_terbayar;
+            $credit->save();
+
+            // Melakukan pengecekan jika inputan memiliki File
+            if ($request->hasFile('upload_bukti')) {
+                $fileName = $request->upload_bukti->getClientOriginalName();
+
+                // Menyimpan data pada storage local
+                Storage::putFileAs('public/files', $request->upload_bukti, $fileName);
+                // Menyimpan File pada database File Data Pinjaman
+                $fileInstallment->files = $fileName;
+                $fileInstallment->id_installments = $installment->id;
+                $fileInstallment->save();
+            }
+
+            return redirect()->back()->with('success', 'Berhasil menambahkan Angsuran');
+        } catch (\Throwable $th) {
+            dd($th);
+            return redirect()->back()->with('error', 'Gagal menambahkan Angsuran');
         }
 
     }

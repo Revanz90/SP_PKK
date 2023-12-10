@@ -41,10 +41,10 @@
                             <i class="fas fa-plus"></i>
                             CETAK
                         </button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-plus"></i>
                             TAMBAH
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>
@@ -170,8 +170,7 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <div class="btn-savechange-reset">
                         <button type="reset" class="btn btn-sm btn-warning" style="margin-right: 5px">Reset</button>
-                        <button type="submit" form="angsuranform" value="Submit"
-                            class="btn btn-primary">Submit</button>
+                        <button type="submit" form="angsuranform" value="Submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
