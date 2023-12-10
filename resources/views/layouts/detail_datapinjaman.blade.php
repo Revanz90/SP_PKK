@@ -23,24 +23,20 @@
         <div class="d-flex bd-highlight card-header">
             <h4 class="p-2 flex-grow-1 bd-highlight card-title font-weight-bold">DATA PINJAMAN</h4>
             <div>
-                @if ($data->status_ketua == 'diterima')
-                    @hasrole('admin|ketua|anggota')
+                @hasrole('admin|ketua|anggota')
+                    @if ($data->status_credit == 'aktif')
                         <form method="POST" action="{{ route('storedataangsuran', ['id' => $data->id]) }}">
                             @csrf
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                                 <i class="fas fa-plus"></i>
                                 ANGSURAN
                             </button>
-                        @endhasrole
-                @endif
+                    @endif
+                @endhasrole
                 @if ($data->status_ketua == 'baru')
-                    @hasrole('admin|ketua')
+                    @hasrole('admin|ketua|anggota')
                         <form method="POST" action="{{ route('creditstatus', ['id' => $data->id]) }}">
                             @csrf
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                                <i class="fas fa-plus"></i>
-                                ANGSURAN
-                            </button>
                             <button type="submit" class="btn btn-success" value="diterima" name="c">
                                 <i class="fas fa-check"></i>
                                 Diterima

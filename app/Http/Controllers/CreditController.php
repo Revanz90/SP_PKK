@@ -6,6 +6,7 @@ use App\Models\Credit;
 use App\Models\CreditFile;
 use App\Models\Installment;
 use App\Models\InstallmentFile;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -40,8 +41,6 @@ class CreditController extends Controller
             $credit->keterangan = $request->input('keterangan');
             $credit->author_id = Auth::id();
             $credit->author_name = Auth::user()->name;
-            // $credit->loan_interest = 0;
-            // $credit->penalty = 0;
             $credit->save();
 
             // Melakukan pengecekan jika inputan memiliki File
@@ -66,16 +65,17 @@ class CreditController extends Controller
     public function updatestatuscredit(Request $request, $id)
     {
         $buttonValue = $request->input('c');
-        // dd($buttonValue);
+        $currentDate = Carbon::now();
 
         if ($buttonValue == 'diterima') {
             $credit = Credit::find($id);
-            $credit->status_credit = 'diterima';
+            $credit->status_credit = 'aktif';
             $credit->status_ketua = 'diterima';
             $credit->loan_interest = 0.05;
             $credit->penalty = 5000;
-            $credit->due_date = 30;
-
+            $credit->due_date = $currentDate->format('jS');
+            // $credit->due_date = $currentDate;
+            $credit->nominal_uang = $credit->nominal_uang + ($credit->nominal_uang * $credit->loan_interest);
             $credit->save();
 
             return redirect()->back()->with('success', 'Pinjaman Ini Diterima');

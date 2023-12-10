@@ -16,13 +16,13 @@ return new class extends Migration
             $table->integer('nominal_uang');
             $table->string('keterangan');
             $table->timestamp('tanggal_transfer');
-            $table->enum('status_credit', ['baru', 'diterima', 'ditolak'])->default('baru');
+            $table->enum('status_credit', ['baru', 'aktif', 'ditolak', 'lunas'])->default('baru');
             $table->unsignedBigInteger('author_id');
             $table->string('author_name');
             $table->enum('status_ketua', ['baru', 'diterima', 'ditolak'])->default('baru');
             $table->double('loan_interest')->default(0);
             $table->double('penalty')->default(0);
-            $table->string('due_date')->default(0);
+            $table->string('due_date')->nullable();
             $table->double('total_terbayar')->default(0);
             $table->timestamps();
 
