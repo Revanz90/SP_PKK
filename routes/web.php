@@ -7,6 +7,8 @@ use App\Http\Controllers\DetailDataAngsuranController;
 use App\Http\Controllers\DetailDataPinjamanController;
 use App\Http\Controllers\DetailDataSimpananController;
 use App\Http\Controllers\InstallmentController;
+use App\Http\Controllers\LaporanAngsuranController;
+use App\Http\Controllers\LaporanPinjamanController;
 use App\Http\Controllers\MonthlyReportController;
 use App\Http\Controllers\SavingController;
 use Illuminate\Support\Facades\Route;
@@ -52,7 +54,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/data_angsuran', [InstallmentController::class, 'store'])->name('storedataangsuran');
     Route::get('/{id}/detail_dataangsuran', [DetailDataAngsuranController::class, 'index'])->name('detail_dataangsuran');
 
-    Route::get('/monthly_report', [MonthlyReportController::class, 'monthly'])->name('laporan_bulanan');
+    Route::get('/laporan_simpanan', [MonthlyReportController::class, 'index'])->name('laporan_simpanan');
+
+    Route::get('/laporan_pinjaman', [LaporanPinjamanController::class, 'index'])->name('laporan_pinjaman');
+
+    Route::get('/laporan_angsuran', [LaporanAngsuranController::class, 'index'])->name('laporan_angsuran');
+    
 });
 
 require __DIR__ . '/auth.php';

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Saving;
+use App\Models\Credit;
 use Illuminate\Http\Request;
 
-class MonthlyReportController extends Controller
+class LaporanPinjamanController extends Controller
 {
     public function index(Request $request)
     {
         // $savings = Saving::all()->sortByDesc('created_at');
-        $querySavingMonth = Saving::query();
+        $querySavingMonth = Credit::query();
         $month = $request->month_filter;
         $year = $request->year_filter;
 
@@ -63,8 +63,8 @@ class MonthlyReportController extends Controller
 
         }
 
-        $savings = $querySavingMonth->get();
+        $credits = $querySavingMonth->get();
 
-        return view('layouts.laporan_simpanan', compact('savings'));
+        return view('layouts.laporan_pinjaman', compact('credits'));
     }
 }

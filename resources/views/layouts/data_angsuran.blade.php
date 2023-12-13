@@ -37,10 +37,10 @@
                 <div class="card-tools">
                     <input type="hidden" name="xnull" id="statusxid[2]" value="2">
                     <div class="project-actions text-center">
-                        <a href="{{ route('laporan_bulanan') }}" class="btn btn-warning" role="button"
+                        <a href="{{ route('laporan_angsuran') }}" class="btn btn-warning" role="button"
                             data-bs-toggle="button">
                             <i class="fas fa-print"></i>
-                            CETAK BULANAN</a>
+                            CETAK</a>
                     </div>
                 </div>
             </div>
