@@ -25,7 +25,6 @@ class Credit extends Model
                     return "badge-danger";
                 case 'lunas':
                     return "badge-info";
-
             }
         }
         return 'badge-primary';

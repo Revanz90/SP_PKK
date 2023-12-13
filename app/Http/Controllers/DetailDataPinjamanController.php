@@ -11,6 +11,15 @@ class DetailDataPinjamanController extends Controller
     {
         $data = Credit::find($id);
         $file = CreditFile::where('id_credits', $data->id)->first();
+
+        $getTotalTerbayar = $data->total_terbayar;
+        $getTotalPinjaman = $data->nominal_pinjaman;
+
+        if ($getTotalTerbayar == $getTotalPinjaman) {
+            $data->status_credit = 'lunas';
+            $data->save();
+        }
+
         return view('layouts.detail_datapinjaman', ['data' => $data, 'file' => $file]);
     }
 }

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\CreditController;
-use App\Http\Controllers\DaftarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailDataAngsuranController;
 use App\Http\Controllers\DetailDataPinjamanController;
@@ -32,12 +31,12 @@ Route::get('/', function () {
 });
 
 Route::get('akun', [AkunController::class, 'akun'])->name('akun');
-Route::get('/daftar', [DaftarController::class, 'daftar'])->name('daftar');
+// Route::get('/daftar', [DaftarController::class, 'daftar'])->name('daftar');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/data_simpanan', [SavingController::class, 'index'])->name('datasimpanan');
     Route::post('/data_simpanan', [SavingController::class, 'store'])->name('storedatasimpanan');
