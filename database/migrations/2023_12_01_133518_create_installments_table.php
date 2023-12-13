@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('installments', function (Blueprint $table) {
             $table->id();
-            $table->integer('nominal_uang');
+            $table->integer('nominal_angsuran');
             $table->string('keterangan');
             $table->timestamp('tanggal_transfer');
             $table->enum('status', ['baru', 'disimpan', 'diterima', 'ditolak'])->default('baru');

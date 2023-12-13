@@ -68,9 +68,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Nominal</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Nominal Pinjaman</label>
                     <div class="col-sm-10">
-                        <input type="text" name="" class="form-control" value="{{ $data->nominal_uang }}"
+                        <input type="text" name="" class="form-control" value="{{ $data->nominal_pinjaman }}"
                             readonly>
                     </div>
                 </div>
@@ -82,9 +82,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Tanggal</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Tanggal pinjaman</label>
                     <div class="col-sm-10">
-                        <input type="date" name="" class="form-control" value="{{ $data->created_at }}" readonly>
+                        <input type="text" name="" class="form-control" value="{{ $data->tanggal_pinjaman }}"
+                            readonly>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -102,8 +103,8 @@
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label font-weight-normal">Syarat Pinjaman File</label>
                     <div class="card-footer bg-white col-sm-10">
-                        <p><a href="{{ url('storage/files/' . $file->files) }}"
-                                class="mailbox-attachment-name"><u>{{ $file->files }}</u></a></p>
+                        <embed type="application/pdf" src="{{ url('storage/files/' . $file->files) }}" id="pdf-embed"
+                            frameborder="0" width="100%" height="780">
                     </div>
                 </div>
             </form>
@@ -149,9 +150,10 @@
 
                                                 <div class="form-group row">
                                                     <label for=""
-                                                        class="col-sm-2 col-form-label font-weight-normal">Tanggal</label>
+                                                        class="col-sm-2 col-form-label font-weight-normal">Tanggal
+                                                        Transfer</label>
                                                     <div class="col-sm-10">
-                                                        <input type="date" name="tanggal_transaksi"
+                                                        <input type="date" name="tanggal_transfer"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -167,8 +169,8 @@
 
                                                 <div class="form-group row">
                                                     <label for="proposal_ProposalTA"
-                                                        class="col-sm-2 col-form-label font-weight-normal">Upload Syarat
-                                                        Pinjaman</label>
+                                                        class="col-sm-2 col-form-label font-weight-normal">Upload Bukti
+                                                        Angsuran</label>
                                                     <div class="col-sm-10">
                                                         <input type="file" name="upload_bukti" class="form-control"
                                                             required>

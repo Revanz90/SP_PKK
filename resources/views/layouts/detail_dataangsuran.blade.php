@@ -34,16 +34,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Nominal</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Nominal Angsuran</label>
                     <div class="col-sm-10">
-                        <input type="text" name="" class="form-control" value="{{ $data->nominal_uang }}"
+                        <input type="text" name="" class="form-control" value="{{ $data->nominal_angsuran }}"
                             readonly>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Tanggal</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Tanggal Angsuran</label>
                     <div class="col-sm-10">
-                        <input type="date" name="" class="form-control" value="{{ $data->created_at }}" readonly>
+                        <input type="text" name="" class="form-control" value="{{ $data->tanggal_transfer }}"
+                            readonly>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -53,10 +54,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Bukti Transfer File</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Bukti Angsuran File</label>
                     <div class="card-footer bg-white col-sm-10">
-                        <p><a href="{{ url('storage/files/' . $file->files) }}"
-                                class="mailbox-attachment-name"><u>{{ $file->files }}</u></a></p>
+                        <embed type="application/pdf" src="{{ url('storage/files/' . $file->files) }}" id="pdf-embed"
+                            frameborder="0" width="100%" height="780">
                     </div>
                 </div>
             </form>

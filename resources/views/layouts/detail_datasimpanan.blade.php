@@ -34,16 +34,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Nominal</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Nominal Simpanan</label>
                     <div class="col-sm-10">
                         <input type="text" name="" class="form-control" value="{{ $data->nominal_uang }}"
                             readonly>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Tanggal</label>
+                    <label for="" class="col-sm-2 col-form-label font-weight-normal">Tanggal Transfer</label>
                     <div class="col-sm-10">
-                        <input type="date" name="" class="form-control" value="{{ $data->created_at }}" readonly>
+                        <input type="text" name="" class="form-control" value="{{ $data->tanggal_transfer }}"
+                            readonly>
                     </div>
                 </div>
                 <div class="form-group row">

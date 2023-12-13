@@ -36,8 +36,8 @@ class CreditController extends Controller
                 'upload_bukti' => 'required',
             ]);
 
-            $credit->nominal_uang = $request->input('nominal');
-            $credit->tanggal_transfer = $request->input('tanggal_transaksi');
+            $credit->nominal_pinjaman = $request->input('nominal');
+            $credit->tanggal_pinjaman = $request->input('tanggal_transaksi');
             $credit->keterangan = $request->input('keterangan');
             $credit->author_id = Auth::id();
             $credit->author_name = Auth::user()->name;
@@ -72,7 +72,7 @@ class CreditController extends Controller
             $credit->status_ketua = 'diterima';
             $credit->loan_interest = 0.05;
             $credit->penalty = 5000;
-            $credit->nominal_uang = $credit->nominal_uang + ($credit->nominal_uang * $credit->loan_interest);
+            $credit->nominal_pinjaman = $credit->nominal_pinjaman + ($credit->nominal_pinjaman * $credit->loan_interest);
             $credit->save();
 
             return redirect()->back()->with('success', 'Pinjaman Ini Diterima');
@@ -94,27 +94,23 @@ class CreditController extends Controller
 
     public function storeInstallment(Request $request, $id)
     {
-
-        // $credit->due_date = $currentDate->format('jS');
-        // $credit->due_date = $currentDate;
-
         try {
             $credit = Credit::find($id);
             $installment = new Installment();
             $fileInstallment = new InstallmentFile();
-            $currentDate = Carbon::now();
+            $currentDate = Carbon::parse($request->input('tanggal_transfer'));
 
             // Validasi yang wajib diinputkan pada request payloads
             $validated = $request->validate([
                 'nominal' => 'required',
-                'tanggal_transaksi' => 'required',
+                'tanggal_transfer' => 'required',
                 'keterangan' => 'required',
                 'upload_bukti' => 'required',
             ]);
 
             if ($currentDate->greaterThan($credit->due_date)) {
-                $installment->nominal_uang = $request->input('nominal');
-                $installment->tanggal_transfer = $request->input('tanggal_transaksi');
+                $installment->nominal_angsuran = $request->input('nominal');
+                $installment->tanggal_transfer = $request->input('tanggal_transfer');
                 $installment->keterangan = $request->input('keterangan');
                 $installment->author_id = Auth::id();
                 $installment->author_name = Auth::user()->name;
@@ -144,16 +140,16 @@ class CreditController extends Controller
 
                 return redirect()->back()->with('success', 'Berhasil menambahkan Angsuran');
             } else {
-                $installment->nominal_uang = $request->input('nominal');
-                $installment->tanggal_transfer = $request->input('tanggal_transaksi');
+                $installment->nominal_angsuran = $request->input('nominal');
+                $installment->tanggal_transfer = $request->input('tanggal_transfer');
                 $installment->keterangan = $request->input('keterangan');
                 $installment->author_id = Auth::id();
                 $installment->author_name = Auth::user()->name;
                 $installment->credit_id = $id;
                 $installment->save();
 
-                $hutang_terbayar = $credit->total_terbayar + $installment->nominal_uang = $request->input('nominal');
-                $credit->total_terbayar = $credit->total_terbayar + $hutang_terbayar;
+                $hutang_terbayar = $credit->total_terbayar + $installment->nominal_pinjaman = $request->input('nominal');
+                $credit->total_terbayar = $hutang_terbayar;
                 $credit->save();
 
                 // Melakukan pengecekan jika inputan memiliki File
@@ -169,7 +165,6 @@ class CreditController extends Controller
                 }
 
                 return redirect()->back()->with('success', 'Berhasil menambahkan Angsuran');
-
             }
         } catch (\Throwable $th) {
             dd($th);

@@ -57,8 +57,8 @@
                         <tr>
                             <th>ID Anggota</th>
                             <th>Nama Anggota</th>
-                            <th>Nominal</th>
-                            <th>Tanggal</th>
+                            <th>Nominal Simpanan</th>
+                            <th>Tanggal Transfer</th>
                             <th>Keterangan</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -70,7 +70,7 @@
                                 <td>{{ $data->author_id }}</td>
                                 <td>{{ $data->author_name }}</td>
                                 <td>{{ $data->nominal_uang }}</td>
-                                <td>{{ $data->created_at }}</td>
+                                <td>{{ $data->tanggal_transfer }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
                                     <div class="btn btn-xs btn-primary {{ $data->status_saving_masuk }}">
@@ -122,7 +122,8 @@
 
                                                 <div class="form-group row">
                                                     <label for=""
-                                                        class="col-sm-2 col-form-label font-weight-normal">Nominal</label>
+                                                        class="col-sm-2 col-form-label font-weight-normal">Nominal
+                                                        Simpanan</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" name="nominal" class="form-control">
                                                     </div>
@@ -131,9 +132,9 @@
                                                 <div class="form-group row">
                                                     <label for=""
                                                         class="col-sm-2 col-form-label font-weight-normal">Tanggal
-                                                        Transaksi</label>
+                                                        Transfer</label>
                                                     <div class="col-sm-10">
-                                                        <input type="date" name="tanggal_transaksi" class="form-control">
+                                                        <input type="date" name="tanggal_transfer" class="form-control">
                                                     </div>
                                                 </div>
 

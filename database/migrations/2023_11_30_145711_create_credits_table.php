@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('credits', function (Blueprint $table) {
             $table->id();
-            $table->integer('nominal_uang');
+            $table->integer('nominal_pinjaman');
             $table->string('keterangan');
-            $table->timestamp('tanggal_transfer');
+            $table->timestamp('tanggal_pinjaman');
             $table->enum('status_credit', ['baru', 'aktif', 'ditolak', 'lunas'])->default('baru');
             $table->unsignedBigInteger('author_id');
             $table->string('author_name');

@@ -37,14 +37,10 @@
                 <div class="card-tools">
                     <input type="hidden" name="xnull" id="statusxid[2]" value="2">
                     <div class="project-actions text-center">
-                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
-                            <i class="fas fa-plus"></i>
-                            CETAK
-                        </button>
-                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                            <i class="fas fa-plus"></i>
-                            TAMBAH
-                        </button> --}}
+                        <a href="{{ route('laporan_bulanan') }}" class="btn btn-warning" role="button"
+                            data-bs-toggle="button">
+                            <i class="fas fa-print"></i>
+                            CETAK BULANAN</a>
                     </div>
                 </div>
             </div>
@@ -57,10 +53,9 @@
                         <tr>
                             <th>ID Anggota</th>
                             <th>Nama Anggota</th>
-                            <th>Nominal</th>
-                            <th>Tanggal</th>
+                            <th>Nominal Angsuran</th>
+                            <th>Tanggal Angsuran</th>
                             <th>Keterangan</th>
-                            {{-- <th>Status</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -69,7 +64,7 @@
                             <tr>
                                 <td>{{ $data->author_id }}</td>
                                 <td>{{ $data->author_name }}</td>
-                                <td>{{ $data->nominal_uang }}</td>
+                                <td>{{ $data->nominal_angsuran }}</td>
                                 <td>{{ $data->created_at }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 {{-- <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
