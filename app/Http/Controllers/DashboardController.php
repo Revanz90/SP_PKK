@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Credit;
+use App\Models\Installment;
 use App\Models\Saving;
 
 class DashboardController extends Controller
@@ -9,9 +11,11 @@ class DashboardController extends Controller
     public function hitungsurat()
     {
         $saving = Saving::count();
-        $credit = Saving::where('status', 'diterima')->get()->count();
-        $instalment = Saving::where('status', 'ditolak')->get()->count();
+        $credit = Credit::count();
+        $installment = Installment::count();
 
-        return view('dashboard', ['countsaving' => $saving, 'countcredit' => $credit, 'countinstalment' => $instalment]);
+        // $credit = Credit::where('status_credit', 'diterima')->get()->count();
+
+        return view('dashboard', ['countsaving' => $saving, 'countcredit' => $credit, 'countinstalment' => $installment]);
     }
 }
