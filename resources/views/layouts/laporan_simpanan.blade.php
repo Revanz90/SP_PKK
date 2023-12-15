@@ -68,7 +68,7 @@
                     <th>{{ $saving->author_id }}</th>
                     <td>{{ $saving->author_name }}</td>
                     <td>{{ $saving->nominal_uang }}</td>
-                    <td>{{ $saving->created_at }}</td>
+                    <td>{{ $saving->tanggal_transfer }}</td>
                     <td>Diterima</td>
                 </tr>
             @endforeach

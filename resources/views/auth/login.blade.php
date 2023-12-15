@@ -68,9 +68,9 @@
                             </p>
                         </div>
                         <div class="col-8">
-                            <p class="mb-1 mt-1">
+                            {{-- <p class="mb-1 mt-1">
                                 <a href="{{ route('daftar') }}" class="text-center">Register</a>
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                 </form>

@@ -57,7 +57,7 @@
                 <th>ID Anggota</th>
                 <th>Nama Anggota</th>
                 <th>Nominal</th>
-                <th>Tanggal</th>
+                <th>Tanggal Pinjaman</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -68,7 +68,7 @@
                     <th>{{ $credit->author_id }}</th>
                     <td>{{ $credit->author_name }}</td>
                     <td>{{ $credit->nominal_uang }}</td>
-                    <td>{{ $credit->created_at }}</td>
+                    <td>{{ $credit->tanggal_pinjaman }}</td>
                     <td>Diterima</td>
                 </tr>
             @endforeach

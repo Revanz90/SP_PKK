@@ -72,7 +72,7 @@
                                 <td>{{ $data->author_name }}</td>
                                 <td>{{ $data->nominal_pinjaman }}</td>
                                 <td>{{ $data->total_terbayar }}</td>
-                                <td>{{ $data->created_at }}</td>
+                                <td>{{ $data->tanggal_pinjaman }}</td>
                                 <td>{{ $data->keterangan }}</td>
                                 <td class="text-center d-flex flex-column align-items-stretch" style="gap: 4px">
                                     <div class="btn btn-xs {{ $data->status_credit_masuk }}">

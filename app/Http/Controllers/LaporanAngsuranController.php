@@ -9,56 +9,56 @@ class LaporanAngsuranController extends Controller
 {
     public function index(Request $request)
     {
-        // $savings = Saving::all()->sortByDesc('created_at');
+        // $savings = Saving::all()->sortByDesc('tanggal_transfer');
         $querySavingMonth = Installment::query();
         $month = $request->month_filter;
         $year = $request->year_filter;
 
         switch ($month) {
             case 'januari':
-                $querySavingMonth->whereMonth('created_at', '1');
+                $querySavingMonth->whereMonth('tanggal_transfer', '1');
                 break;
             case 'februari':
-                $querySavingMonth->whereMonth('created_at', '2');
+                $querySavingMonth->whereMonth('tanggal_transfer', '2');
                 break;
             case 'maret':
-                $querySavingMonth->whereMonth('created_at', '3');
+                $querySavingMonth->whereMonth('tanggal_transfer', '3');
                 break;
             case 'april':
-                $querySavingMonth->whereMonth('created_at', '4');
+                $querySavingMonth->whereMonth('tanggal_transfer', '4');
                 break;
             case 'mei':
-                $querySavingMonth->whereMonth('created_at', '5');
+                $querySavingMonth->whereMonth('tanggal_transfer', '5');
                 break;
             case 'juni':
-                $querySavingMonth->whereMonth('created_at', '6');
+                $querySavingMonth->whereMonth('tanggal_transfer', '6');
                 break;
             case 'juli':
-                $querySavingMonth->whereMonth('created_at', '7');
+                $querySavingMonth->whereMonth('tanggal_transfer', '7');
                 break;
             case 'agustus':
-                $querySavingMonth->whereMonth('created_at', '8');
+                $querySavingMonth->whereMonth('tanggal_transfer', '8');
                 break;
             case 'september':
-                $querySavingMonth->whereMonth('created_at', '9');
+                $querySavingMonth->whereMonth('tanggal_transfer', '9');
                 break;
             case 'oktober':
-                $querySavingMonth->whereMonth('created_at', '10');
+                $querySavingMonth->whereMonth('tanggal_transfer', '10');
                 break;
             case 'november':
-                $querySavingMonth->whereMonth('created_at', '11');
+                $querySavingMonth->whereMonth('tanggal_transfer', '11');
                 break;
             case 'desember':
-                $querySavingMonth->whereMonth('created_at', '12');
+                $querySavingMonth->whereMonth('tanggal_transfer', '12');
                 break;
         }
 
         switch ($year) {
             case '2023':
-                $querySavingMonth->whereYear('created_at', '2023');
+                $querySavingMonth->whereYear('tanggal_transfer', '2023');
                 break;
             case '2024':
-                $querySavingMonth->whereYear('created_at', '2024');
+                $querySavingMonth->whereYear('tanggal_transfer', '2024');
                 break;
 
         }

@@ -56,8 +56,8 @@
             <tr>
                 <th>ID Anggota</th>
                 <th>Nama Anggota</th>
-                <th>Nominal</th>
-                <th>Tanggal</th>
+                <th>Nominal Angsuran</th>
+                <th>Tanggal Angsuran</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -67,8 +67,8 @@
                 <tr>
                     <th>{{ $installment->author_id }}</th>
                     <td>{{ $installment->author_name }}</td>
-                    <td>{{ $installment->nominal_uang }}</td>
-                    <td>{{ $installment->created_at }}</td>
+                    <td>{{ $installment->nominal_angsuran }}</td>
+                    <td>{{ $installment->tanggal_transfer }}</td>
                     <td>Diterima</td>
                 </tr>
             @endforeach

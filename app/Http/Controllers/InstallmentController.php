@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Credit;
 use App\Models\Installment;
 use App\Models\InstallmentFile;
 use Carbon\Carbon;
@@ -17,43 +18,85 @@ class InstallmentController extends Controller
         return view('layouts.data_angsuran', ['datas' => $installment]);
     }
 
-    public function store(Request $request)
+    public function store_installment(Request $request, $id)
     {
-        $currentDate = Carbon::now();
-        // $futureDate = $currentDate ->addDays($);
         try {
+            $credit = Credit::find($id);
             $installment = new Installment();
             $installmentfile = new InstallmentFile();
 
             // Validasi yang wajib diinputkan pada request payloads
             $validated = $request->validate([
-                'nominal' => 'required',
-                'tanggal_transaksi' => 'required',
-                'keterangan' => 'required',
-                'upload_bukti' => 'required',
+                'nominal_angsuran' => 'required',
+                'tanggal_transfer_angsuran' => 'required',
+                'keterangan_angsuran' => 'required',
+                'upload_bukti_angsuran' => 'required',
             ]);
 
-            $installment->nominal_uang = $request->input('nominal');
-            $installment->created_at = $request->input('tanggal_transaksi');
-            $installment->keterangan = $request->input('keterangan');
-            $installment->author_id = Auth::id();
-            $installment->author_name = Auth::user()->name;
-            $installment->save();
+            $currentDate = Carbon::parse($request->input('tanggal_transfer_angsuran'));
 
-            // Melakukan pengecekan jika inputan memiliki File
-            if ($request->hasFile('upload_bukti')) {
-                $fileName = $request->upload_bukti->getClientOriginalName();
+            if ($currentDate->greaterThan($credit->due_date)) {
+                $installment->nominal_angsuran = $request->input('nominal_angsuran');
+                $installment->keterangan = $request->input('keterangan_angsuran');
+                $installment->tanggal_transfer = $request->input('tanggal_transfer_angsuran');
+                $installment->author_id = Auth::id();
+                $installment->author_name = Auth::user()->name;
+                $installment->credit_id = $id;
+                $installment->save();
 
-                // Menyimpan data pada storage local
-                Storage::putFileAs('public/files', $request->upload_bukti, $fileName);
-                // Menyimpan File pada database File Surat Masuk
-                $installmentfile->files = $fileName;
-                $installmentfile->id_installments = $installment->id;
-                $installmentfile->save();
+                // Fungsi untuk mengambil tanggal
+                $toDate = Carbon::parse($credit->due_date);
+                $fromDate = Carbon::parse($currentDate);
+
+                // Fungsi untuk menghitung denda
+                $countdayslate = $toDate->diffInDays($fromDate);
+                $denda = $credit->penalty * $countdayslate;
+                $hitung_denda = $request->input('nominal_angsuran') - $denda;
+                // Fungsi untuk menyimpan denda
+                $credit->total_terbayar = $credit->total_terbayar + $hitung_denda;
+                $credit->save();
+
+                // Melakukan pengecekan jika inputan memiliki File
+                if ($request->hasFile('upload_bukti_angsuran')) {
+                    $fileName = $request->upload_bukti_angsuran->getClientOriginalName();
+
+                    // Menyimpan data pada storage local
+                    Storage::putFileAs('public/files', $request->upload_bukti_angsuran, $fileName);
+                    // Menyimpan File pada database File Surat Masuk
+                    $installmentfile->files = $fileName;
+                    $installmentfile->id_installments = $installment->id;
+                    $installmentfile->save();
+                }
+
+            } else {
+                $installment->nominal_angsuran = $request->input('nominal_angsuran');
+                $installment->tanggal_transfer = $request->input('tanggal_transfer_angsuran');
+                $installment->keterangan = $request->input('keterangan_angsuran');
+                $installment->author_id = Auth::id();
+                $installment->author_name = Auth::user()->name;
+                $installment->credit_id = $id;
+                $installment->save();
+
+                $hutang_terbayar = $credit->total_terbayar + $installment->nominal_pinjaman = $request->input('nominal_angsuran');
+                $credit->total_terbayar = $hutang_terbayar;
+                $credit->save();
+
+                // Melakukan pengecekan jika inputan memiliki File
+                if ($request->hasFile('upload_bukti_angsuran')) {
+                    $fileName = $request->upload_bukti_angsuran->getClientOriginalName();
+
+                    // Menyimpan data pada storage local
+                    Storage::putFileAs('public/files', $request->upload_bukti_angsuran, $fileName);
+                    // Menyimpan File pada database File Data Pinjaman
+                    $installmentfile->files = $fileName;
+                    $installmentfile->id_installments = $installment->id;
+                    $installmentfile->save();
+                }
             }
 
             return redirect()->back()->with('success', 'Berhasil menambahkan Angsuran');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->back()->with('error', 'Gagal menambahkan Angsuran');
         }
     }

@@ -46,20 +46,18 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/data_pinjaman', [CreditController::class, 'index'])->name('datapinjaman');
     Route::post('/data_pinjaman', [CreditController::class, 'store'])->name('storedatapinjaman');
-    Route::get('/{id}/detail_datapinjaman', [DetailDataPinjamanController::class, 'index'])->name('detail_datapinjaman');
-    Route::post('/{id}/detail_datapinjaman', [CreditController::class, 'storeInstallment'])->name('detail_datapinjaman');
-    Route::post('/{id}/update-status', [CreditController::class, 'updatestatuscredit'])->name('creditstatus');
 
+    Route::get('/{id}/detail_datapinjaman', [DetailDataPinjamanController::class, 'index'])->name('detail_datapinjaman');
+    Route::post('/{id}/detail_datapinjaman', [DetailDataPinjamanController::class, 'store_review'])->name('store_reviewpinjaman');
+
+    Route::post('/{id}/store_angsuran_pinjaman', [InstallmentController::class, 'store_installment'])->name('store_dataangsuran');
     Route::get('/data_angsuran', [InstallmentController::class, 'index'])->name('dataangsuran');
-    Route::post('/data_angsuran', [InstallmentController::class, 'store'])->name('storedataangsuran');
     Route::get('/{id}/detail_dataangsuran', [DetailDataAngsuranController::class, 'index'])->name('detail_dataangsuran');
 
     Route::get('/laporan_simpanan', [MonthlyReportController::class, 'index'])->name('laporan_simpanan');
-
     Route::get('/laporan_pinjaman', [LaporanPinjamanController::class, 'index'])->name('laporan_pinjaman');
-
     Route::get('/laporan_angsuran', [LaporanAngsuranController::class, 'index'])->name('laporan_angsuran');
-    
+
 });
 
 require __DIR__ . '/auth.php';

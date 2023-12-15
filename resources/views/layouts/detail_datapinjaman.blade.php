@@ -25,33 +25,24 @@
             <div>
                 @hasrole('admin|ketua|anggota')
                     @if ($data->status_credit == 'aktif')
-                        <form method="POST" action="{{ route('storedataangsuran', ['id' => $data->id]) }}">
-                            @csrf
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                                <i class="fas fa-plus"></i>
-                                ANGSURAN
-                            </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#modal-default-angsuran">
+                            <i class="fas fa-plus"></i>
+                            ANGSURAN
+                        </button>
                     @endif
                 @endhasrole
-                @if ($data->status_ketua == 'baru')
-                    @hasrole('admin|ketua')
-                        <form method="POST" action="{{ route('creditstatus', ['id' => $data->id]) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-success" value="diterima" name="c">
-                                <i class="fas fa-check"></i>
-                                Diterima
-                            </button>
-                            <button type="submit" class="btn btn-danger" value="ditolak" name="c">
-                                <i class="fas fa-times"></i>
-                                Ditolak
-                            </button>
-                        </form>
-                    @endhasrole
-                @endif
 
+                @if ($data->status_credit == 'baru')
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#modal-default-pinjaman">
+                        <i class="fas fa-plus"></i>
+                        Review Pinjaman
+                    </button>
+                @endif
             </div>
         </div>
-        {{-- @foreach ($datadetailsm as $data) --}}
+
         <div class="card-body">
             <form action="" class="form-horizontal">
 
@@ -109,11 +100,101 @@
                 </div>
             </form>
         </div>
-        {{-- @endforeach --}}
     </div>
 
-    <!-- Modal pinjaman -->
-    <div class="modal fade" id="modal-default">
+    <!-- Modal review pinjaman -->
+    <div class="modal fade" id="modal-default-pinjaman">
+        <div class="modal-dialog" style="max-width: 80%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Review Pinjaman</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <section class="content">
+                        <div class="card">
+                            <!-- Navbar Content -->
+                            <div class="card-header ">
+                                <h4 class="card-title font-weight-bold">TAMBAH REVIEW PINJAMAN</h4>
+                                <div class="card-tools"></div>
+                            </div>
+                            <!-- /Navbar Content -->
+                            <!-- Page Content -->
+                            <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal"
+                                id="reviewpinjamanform">
+                                {{ csrf_field() }}
+                                <div class="card-body">
+                                    <div class="col-sm-12">
+                                        <div class="card">
+                                            <div class="card-body">
+
+                                                <div class="form-group row">
+                                                    <label for=""
+                                                        class="col-sm-2 col-form-label font-weight-normal">No Nota</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="no_nota" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for=""
+                                                        class="col-sm-2 col-form-label font-weight-normal">Keterangan
+                                                    </label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="keterangan_review_pinajaman"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="proposal_ProposalTA"
+                                                        class="col-sm-2 col-form-label font-weight-normal">Upload Bukti
+                                                        Transfer</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" name="upload_bukti_transfer_review"
+                                                            class="form-control" required>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- /Page Content -->
+                        </div>
+                    </section>
+                </div>
+                <!-- /Main Content -->
+
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">KEMBALI</button>
+                    <div class="btn-savechange-reset">
+                        @if ($data->status_ketua == 'baru')
+                            @hasrole('admin|ketua')
+                                <button type="submit" class="btn btn-danger" value="ditolak" name="c"
+                                    form="reviewpinjamanform">
+                                    <i class="fas fa-times"></i>
+                                    Ditolak
+                                </button>
+                                <button type="submit" class="btn btn-success" value="diterima" name="c"
+                                    form="reviewpinjamanform">
+                                    <i class="fas fa-check"></i>
+                                    Diterima
+                                </button>
+                            @endhasrole
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+
+    <!-- Modal Angsuran -->
+    <div class="modal fade" id="modal-default-angsuran">
         <div class="modal-dialog" style="max-width: 80%">
             <div class="modal-content">
                 <div class="modal-header">
@@ -132,8 +213,8 @@
                             </div>
                             <!-- /Navbar Content -->
                             <!-- Page Content -->
-                            <form action="" enctype="multipart/form-data" method="POST" class="form-horizontal"
-                                id="pinjamanform">
+                            <form action="{{ route('store_dataangsuran', ['id' => $data->id]) }}"
+                                enctype="multipart/form-data" method="POST" class="form-horizontal" id="pinjamanform">
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="col-sm-12">
@@ -142,9 +223,11 @@
 
                                                 <div class="form-group row">
                                                     <label for=""
-                                                        class="col-sm-2 col-form-label font-weight-normal">Nominal</label>
+                                                        class="col-sm-2 col-form-label font-weight-normal">Nominal
+                                                        Angsuran</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="nominal" class="form-control">
+                                                        <input type="text" name="nominal_angsuran"
+                                                            class="form-control">
                                                     </div>
                                                 </div>
 
@@ -153,7 +236,7 @@
                                                         class="col-sm-2 col-form-label font-weight-normal">Tanggal
                                                         Transfer</label>
                                                     <div class="col-sm-10">
-                                                        <input type="date" name="tanggal_transfer"
+                                                        <input type="date" name="tanggal_transfer_angsuran"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -163,7 +246,8 @@
                                                         class="col-sm-2 col-form-label font-weight-normal">Keterangan
                                                     </label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="keterangan" class="form-control">
+                                                        <input type="text" name="keterangan_angsuran"
+                                                            class="form-control">
                                                     </div>
                                                 </div>
 
@@ -172,8 +256,8 @@
                                                         class="col-sm-2 col-form-label font-weight-normal">Upload Bukti
                                                         Angsuran</label>
                                                     <div class="col-sm-10">
-                                                        <input type="file" name="upload_bukti" class="form-control"
-                                                            required>
+                                                        <input type="file" name="upload_bukti_angsuran"
+                                                            class="form-control" required>
                                                     </div>
                                                 </div>
 
