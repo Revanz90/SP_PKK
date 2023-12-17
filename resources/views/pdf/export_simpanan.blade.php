@@ -16,40 +16,6 @@
             <h3>Laporan Data Simpanan</h3>
             <h6>Simpan Pinjam Pemberdayaan Kesejahteraan Keluarga (PKK) Kelurahan Kalitirto, Berbah, Sleman</h6>
         </div>
-
-
-        <div class="container mt-5">
-            <div class="col-md-6 mb-2">
-                <form action="" method="GET">
-                    <div class="flex input-group gap-4">
-                        <select class="form-select"name="month_filter">
-                            <option value="">Bulan</option>
-                            <option value="januari">Januari</option>
-                            <option value="februari">Februari</option>
-                            <option value="maret">Maret</option>
-                            <option value="april">April</option>
-                            <option value="mei">Mei</option>
-                            <option value="juni">Juni</option>
-                            <option value="juli">Juli</option>
-                            <option value="agustus">Agustus</option>
-                            <option value="september">September</option>
-                            <option value="oktober">Oktober</option>
-                            <option value="november">November</option>
-                            <option value="desember">Desember</option>
-                        </select>
-
-                        <select class="form-select"name="year_filter">
-                            <option value="">Tahun</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
-
-                        <button type="submit" class="btn btn-primary">Filter</button>
-                    </div>
-                    <a href="{{ route('export_simpanan') }}" class="btn btn-warning mt-3">Cetak Simpanan</a>
-            </div>
-            </form>
-        </div>
     </div>
 
     <table class="table table-striped">
@@ -64,7 +30,6 @@
         </thead>
         <tbody>
             @foreach ($savings as $saving)
-                {{-- @dd($data) --}}
                 <tr>
                     <th>{{ $saving->author_id }}</th>
                     <td>{{ $saving->author_name }}</td>

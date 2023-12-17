@@ -33,12 +33,8 @@ Route::get('/', function () {
 });
 
 Route::get('akun', [AkunController::class, 'akun'])->name('akun');
-// Route::get('/daftar', [DaftarController::class, 'daftar'])->name('daftar');
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/data_simpanan', [SavingController::class, 'index'])->name('datasimpanan');
     Route::post('/data_simpanan', [SavingController::class, 'store'])->name('storedatasimpanan');
@@ -55,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/{id}/detail_dataangsuran', [DetailDataAngsuranController::class, 'index'])->name('detail_dataangsuran');
 
     Route::get('/laporan_simpanan', [MonthlyReportController::class, 'index'])->name('laporan_simpanan');
+    Route::get('/export_simpanan', [MonthlyReportController::class, 'exportPdf'])->name('export_simpanan');
+
     Route::get('/laporan_pinjaman', [LaporanPinjamanController::class, 'index'])->name('laporan_pinjaman');
     Route::get('/laporan_angsuran', [LaporanAngsuranController::class, 'index'])->name('laporan_angsuran');
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Saving;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MonthlyReportController extends Controller
@@ -66,5 +68,12 @@ class MonthlyReportController extends Controller
         $savings = $querySavingMonth->get();
 
         return view('layouts.laporan_simpanan', compact('savings'));
+    }
+
+    public function exportPdf()
+    {
+        $savings = Saving::all();
+        $pdf = Pdf::loadView('pdf.export_simpanan', ['savings' => $savings]);
+        return $pdf->download('laporan-simpanan' . Carbon::now()->timestamp . '.pdf');
     }
 }
