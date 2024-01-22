@@ -60,6 +60,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->routeIs('dataanggota') ? 'menu-open' : '' }}">
+                    <a href="{{ route('dataanggota') }}" class="nav-link">
+                        <i class="nav-icon far fa-user"></i>
+                        <p>
+                            Data Anggota
+                        </p>
+                    </a>
+                </li>
                 {{-- @endhasrole --}}
             </ul>
         </nav>

@@ -15,7 +15,21 @@
     </div>
 </section>
 
-<div class="row justify-content-center">
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-teal">
+            <div class="inner">
+                <h3>{{ $countsaving }}</h3>
+                <p>Data Anggota</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-stalker"></i>
+            </div>
+            <a href="{{ route('dataanggota') }}" class="small-box-footer">Lihat Anggota <i
+                    class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-info">
@@ -24,7 +38,7 @@
                 <p>Data Simpanan</p>
             </div>
             <div class="icon">
-                <i class="ion ion-email"></i>
+                <i class="ion ion-folder"></i>
             </div>
             <a href="{{ route('datasimpanan') }}" class="small-box-footer">Lihat Info <i
                     class="fas fa-arrow-circle-right"></i></a>
@@ -37,7 +51,7 @@
                 <p>Data Pinjaman</p>
             </div>
             <div class="icon">
-                <i class=" ion ion-email"></i>
+                <i class=" ion ion-email-unread"></i>
             </div>
             <a href="{{ route('datapinjaman') }}" class="small-box-footer">Lihat Info <i
                     class="fas fa-arrow-circle-right"></i></a>
@@ -51,7 +65,7 @@
                 <p>Data Angsuran</p>
             </div>
             <div class="icon">
-                <i class="ion ion-email"></i>
+                <i class="ion ion-compose"></i>
             </div>
             <a href="{{ route('dataangsuran') }}" class="small-box-footer">Lihat Info <i
                     class="fas fa-arrow-circle-right"></i></a>

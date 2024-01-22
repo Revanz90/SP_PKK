@@ -23,7 +23,8 @@
                 <form action="" method="GET">
                     <div class="flex input-group gap-4">
                         <select class="form-select"name="month_filter">
-                            <option value="">Bulan</option>
+                            {{-- <button type="submit" value="januari" class="btn btn-primary">Januari</button> --}}
+                            {{-- <option value="januari" type="submit">Januari</option> --}}
                             <option value="januari">Januari</option>
                             <option value="februari">Februari</option>
                             <option value="maret">Maret</option>
@@ -34,7 +35,7 @@
                             <option value="agustus">Agustus</option>
                             <option value="september">September</option>
                             <option value="oktober">Oktober</option>
-                            <option value="november">November</option>
+                            <option value="november" type="submit">November</option>
                             <option value="desember">Desember</option>
                         </select>
 

@@ -51,7 +51,7 @@ class SavingController extends Controller
 
             return redirect()->back()->with('success', 'Berhasil menambahkan Simpanan');
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
             return redirect()->back()->with('error', 'Gagal menambahkan Simpanan');
         }
     }

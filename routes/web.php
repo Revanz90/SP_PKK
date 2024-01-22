@@ -3,6 +3,7 @@
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\CreditController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataAnggotaController;
 use App\Http\Controllers\DetailDataAngsuranController;
 use App\Http\Controllers\DetailDataPinjamanController;
 use App\Http\Controllers\DetailDataSimpananController;
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/{id}/store_angsuran_pinjaman', [InstallmentController::class, 'store_installment'])->name('store_dataangsuran');
     Route::get('/data_angsuran', [InstallmentController::class, 'index'])->name('dataangsuran');
     Route::get('/{id}/detail_dataangsuran', [DetailDataAngsuranController::class, 'index'])->name('detail_dataangsuran');
+
+    Route::get('/data_anggota', [DataAnggotaController::class, 'index'])->name('dataanggota');
+    Route::post('/data_anggota', [DataAnggotaController::class, 'store'])->name('storedataanggota');
 
     Route::get('/laporan_simpanan', [MonthlyReportController::class, 'index'])->name('laporan_simpanan');
     Route::get('/export_simpanan', [MonthlyReportController::class, 'exportPdf'])->name('export_simpanan');
