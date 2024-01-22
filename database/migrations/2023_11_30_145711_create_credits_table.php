@@ -23,7 +23,7 @@ return new class extends Migration
             $table->double('loan_interest')->default(0);
             $table->double('penalty')->default(0);
             $table->double('count_pinalty')->default(0)->nullable();
-            $table->date('due_date')->default('2023-12-10');
+            $table->date('due_date')->default('2024-01-10');
             $table->double('total_terbayar')->default(0);
             $table->timestamps();
 
