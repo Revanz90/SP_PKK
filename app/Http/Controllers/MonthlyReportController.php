@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Saving;
+use App\Models\Simpanan;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class MonthlyReportController extends Controller
     public function index(Request $request)
     {
         // $savings = Saving::all()->sortByDesc('tanggal_transfer');
-        $querySavingMonth = Saving::query();
+        $querySavingMonth = Simpanan::query();
         $month = $request->month_filter;
         $year = $request->year_filter;
 
@@ -72,7 +72,7 @@ class MonthlyReportController extends Controller
 
     public function exportPdf()
     {
-        $savings = Saving::all();
+        $savings = Simpanan::all();
         $pdf = Pdf::loadView('pdf.export_simpanan', ['savings' => $savings]);
         return $pdf->download('laporan-simpanan' . Carbon::now()->timestamp . '.pdf');
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Credit;
 use App\Models\CreditFile;
+use App\Models\Pinjamans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -15,14 +15,14 @@ class CreditController extends Controller
 
     public function index()
     {
-        $credit = Credit::all()->sortByDesc('created_at');
+        $credit = Pinjamans::all()->sortByDesc('created_at');
         return view('layouts.data_pinjaman', ['datas' => $credit]);
     }
 
     public function store(Request $request)
     {
         try {
-            $credit = new Credit();
+            $credit = new Pinjamans();
             $fileCredit = new CreditFile();
 
             // Validasi yang wajib diinputkan pada request payloads
@@ -54,7 +54,7 @@ class CreditController extends Controller
 
             return redirect()->back()->with('success', 'Berhasil menambahkan Pinjaman');
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
             return redirect()->back()->with('error', 'Gagal menambahkan Pinjaman');
         }
     }

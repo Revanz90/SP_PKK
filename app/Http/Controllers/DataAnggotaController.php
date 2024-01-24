@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
+use App\Models\Anggota;
 use Illuminate\Http\Request;
 
 class DataAnggotaController extends Controller
 {
     public function index()
     {
-        $member = Member::all()->sortByDesc('');
+        $member = Anggota::all()->sortByDesc('');
         return view('layouts.data_anggota', ['datas' => $member]);
     }
 
     public function store(Request $request)
     {
         try {
-            $member = new Member();
+            $member = new Anggota();
 
             // Validasi yang wajib diinputkan pada request payloads
             $validated = $request->validate([

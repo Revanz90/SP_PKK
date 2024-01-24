@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Installment;
+use App\Models\Angsuran;
 use Illuminate\Http\Request;
 
 class LaporanAngsuranController extends Controller
@@ -10,7 +10,7 @@ class LaporanAngsuranController extends Controller
     public function index(Request $request)
     {
         // $savings = Saving::all()->sortByDesc('tanggal_transfer');
-        $querySavingMonth = Installment::query();
+        $querySavingMonth = Angsuran::query();
         $month = $request->month_filter;
         $year = $request->year_filter;
 

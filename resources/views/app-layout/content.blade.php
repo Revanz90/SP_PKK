@@ -20,7 +20,7 @@
         <!-- small box -->
         <div class="small-box bg-teal">
             <div class="inner">
-                <h3>{{ $countsaving }}</h3>
+                <h3>{{ $countmember }}</h3>
                 <p>Data Anggota</p>
             </div>
             <div class="icon">

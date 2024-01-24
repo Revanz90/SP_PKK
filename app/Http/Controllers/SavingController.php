@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Saving;
 use App\Models\SavingFile;
+use App\Models\Simpanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -12,14 +12,14 @@ class SavingController extends Controller
 {
     public function index()
     {
-        $saving = Saving::all()->sortByDesc('created_at');
+        $saving = Simpanan::all()->sortByDesc('created_at');
         return view('layouts.data_simpanan', ['datas' => $saving]);
     }
 
     public function store(Request $request)
     {
         try {
-            $saving = new Saving();
+            $saving = new Simpanan();
             $fileSaving = new SavingFile();
 
             // Validasi yang wajib diinputkan pada request payloads
@@ -58,7 +58,7 @@ class SavingController extends Controller
 
     public function updatedatasimpanan($id)
     {
-        $data = Saving::find($id);
+        $data = Simpanan::find($id);
         $data->status = 'disimpan';
         $data->save();
 

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Credit;
-use App\Models\Installment;
+use App\Models\Angsuran;
 use App\Models\InstallmentFile;
+use App\Models\Pinjamans;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,15 +14,15 @@ class InstallmentController extends Controller
 {
     public function index()
     {
-        $installment = Installment::all()->sortByDesc('created_at');
+        $installment = Angsuran::all()->sortByDesc('created_at');
         return view('layouts.data_angsuran', ['datas' => $installment]);
     }
 
     public function store_installment(Request $request, $id)
     {
         try {
-            $credit = Credit::find($id);
-            $installment = new Installment();
+            $credit = Pinjamans::find($id);
+            $installment = new Angsuran();
             $installmentfile = new InstallmentFile();
 
             // Validasi yang wajib diinputkan pada request payloads
@@ -103,7 +103,7 @@ class InstallmentController extends Controller
 
     public function updatedataangsuran($id)
     {
-        $data = Installment::find($id);
+        $data = Angsuran::find($id);
         $data->status = 'disimpan';
         $data->save();
     }

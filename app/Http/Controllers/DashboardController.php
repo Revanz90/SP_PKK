@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Credit;
-use App\Models\Installment;
-use App\Models\Saving;
+use App\Models\Anggota;
+use App\Models\Angsuran;
+use App\Models\Pinjamans;
+use App\Models\Simpanan;
 
 class DashboardController extends Controller
 {
     public function hitungsurat()
     {
-        $saving = Saving::count();
-        $credit = Credit::count();
-        $installment = Installment::count();
+        $anggota = Anggota::count();
+        $simpanan = Simpanan::count();
+        $pinjaman = Pinjamans::count();
+        $angsuran = Angsuran::count();
 
         // $credit = Credit::where('status_credit', 'diterima')->get()->count();
 
-        return view('dashboard', ['countsaving' => $saving, 'countcredit' => $credit, 'countinstalment' => $installment]);
+        return view('dashboard', ['countmember' => $anggota, 'countsaving' => $simpanan, 'countcredit' => $pinjaman, 'countinstalment' => $angsuran]);
     }
 }

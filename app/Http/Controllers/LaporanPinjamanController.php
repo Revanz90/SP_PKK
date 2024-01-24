@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Credit;
+use App\Models\Pinjamans;
 use Illuminate\Http\Request;
 
 class LaporanPinjamanController extends Controller
@@ -10,7 +10,7 @@ class LaporanPinjamanController extends Controller
     public function index(Request $request)
     {
         // $savings = Saving::all()->sortByDesc('tanggal_pinjaman');
-        $querySavingMonth = Credit::query();
+        $querySavingMonth = Pinjamans::query();
         $month = $request->month_filter;
         $year = $request->year_filter;
 
