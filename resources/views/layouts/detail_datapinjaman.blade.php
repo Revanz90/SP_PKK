@@ -37,7 +37,7 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                         data-target="#modal-default-pinjaman">
                         <i class="fas fa-plus"></i>
-                        Review Pinjaman
+                        Nota Pencairan Uang
                     </button>
                 @endif
             </div>
@@ -107,7 +107,7 @@
         <div class="modal-dialog" style="max-width: 80%">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Review Pinjaman</h4>
+                    <h4 class="modal-title">Nota Pencairan Uang</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -117,7 +117,7 @@
                         <div class="card">
                             <!-- Navbar Content -->
                             <div class="card-header ">
-                                <h4 class="card-title font-weight-bold">TAMBAH REVIEW PINJAMAN</h4>
+                                <h4 class="card-title font-weight-bold">TAMBAH NOTA PENCAIRAN UANG</h4>
                                 <div class="card-tools"></div>
                             </div>
                             <!-- /Navbar Content -->
